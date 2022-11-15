@@ -1,0 +1,668 @@
+<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css"><meta name="title" content="Computational Markdown"><meta name="licensor" content="AnyWhichWay"><meta name="documentationLicense" content="Creative Commons"><base target="_tab"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" async="" src="https://cdn.jsdelivr.net/npm/@anywhichway/quick-component@0.0.12" component="https://cdn.jsdelivr.net/npm/@anywhichway/math-science-formula@0.0.5" as="ne-latex"></script>
+        <script type="text/javascript" async="" src="https://cdn.jsdelivr.net/npm/@anywhichway/quick-component@0.0.12" component="https://cdn.jsdelivr.net/npm/@anywhichway/sheet-music@0.0.1"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@anywhichway/quick-component/quick-component.js" component="https://cdn.jsdelivr.net/npm/@anywhichway/repl-host@0.0.13" as="ne-cell"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@anywhichway/quick-component/quick-component.js" component="https://cdn.jsdelivr.net/npm/@anywhichway/plotly-chart@0.0.3" as="ne-chart"></script>
+    </head><body><style id="ne-styles">.ne-error {
+    color: red
+}
+blockquote p {
+    padding: 10px;
+    background: #eee;
+    border-radius: 5px;
+    display: block;
+    overflow: auto;
+}
+blockquote p::before {
+    content: '\201C';
+}
+blockquote p::after {
+    content: '\201D';
+}
+del {
+    text-decoration: underline line-through;
+}
+dd {
+    margin-bottom: .5rem;
+    margin-left: 2ch;
+}
+details {
+    padding-left: 3ch;
+}
+details summary {
+    position: relative;
+    left: -3ch;
+}
+dt {
+    font-weight: 550;
+    font-style: italic;
+}
+ins {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+}
+kbd {
+    border-radius: 3px;
+    padding: 1px 2px 0;
+    border: 1px solid black;
+}
+
+.ah-nav {
+    padding-left: 2ch;
+    font-size: small;
+    vertical-align: middle;
+}
+.ah-nav:link {
+    text-decoration: none;
+}
+h1 {
+    font-size: 1.5em;
+}
+h2 {
+    font-size: 1.25em;
+}
+h3 {
+    font-size: 1.12em;
+}
+h5 {
+    font-size: .88em;
+}
+h6 {
+    font-size: .64em;
+}
+table {
+    border: 1px solid lightgray;
+    border-spacing: 0px;
+}
+thead {
+    background-color: whitesmoke;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    border: 1px solid lightgray;
+}
+td {
+    border: 1px solid lightgray;
+}
+.toc-list {
+    counter-reset: section;
+}
+.toc-list  h1 span:after {
+    counter-increment: section;
+    content: counter(section) ".";
+    margin: 0 0 0 0.25em;
+}
+.toc-list ol.toc-item  {
+    counter-reset: clause;
+    list-style: none outside none;
+    text-indent: -2em;
+}
+.toc-list ol.toc-item  li {
+    counter-increment: clause;
+}
+.toc-list ol.toc-item li:before {
+    content: counters(clause, ".") ". ";
+    margin: 0 0.5em 0 0;
+}
+
+.currency-usd::before { content: "$"}
+</style>
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css">
+    <h1 id="introduction-to-computational-markdown™" title="Introduction To Computational Markdown™" class="ah-heading">Introduction To Computational Markdown™<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↓</a></h1>
+    <p>
+      Do you need to write documents or training materials and ensure math is correct, display live data, or get
+      user input to modify the document? Do you want to write and play music or display charts? Let the document
+      do the work for you!
+    </p>
+    <p>
+      Computational Markdown adds support for form layout, macros (including list layout and advanced math), reactive
+      computation, data import, language processing, e.g. Latex, and document data (tailmatter).
+    </p>
+    <p>
+      The use of Edge or Chrome is recommended. Firefox, has not yet released full support for modern Web workers.
+      You will encounter this error: <code>Error: Dynamic module import is disabled or not supported in this context</code>.
+    </p>
+    <h1 id="table-of-contents" title="Table Of Contents" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Table Of Contents<a target="_self" href="#introduction-to-computational-markdown™" title="Introduction To Computational Markdown™" class="ah-nav">↑</a><a target="_self" href="#extras" title="Markdown Extras" class="ah-nav">↓</a></h1>
+    <ol class="toc-item">
+      <li class="toc-item"><a href="#extras" target="_self">Markdown Extras</a></li>
+      <li class="toc-item"><a href="#frontmatter" target="_self">Frontmatter</a></li>
+      <li class="toc-item"><a href="#computational-markdown" target="_self">Computational Markdown</a>
+        <ol class="toc-item">
+          <li class="toc-item"><a href="#form-layout" target="_self">Form Layout</a></li>
+          <li class="toc-item"><a href="#macros" target="_self">Macros</a>
+            <ol class="toc-item">
+              <li class="toc-item"><a href="#comments-and-hidden-data" target="_self">Comments and Hidden Data</a></li>
+              <li class="toc-item"><a href="#named-value-references" target="_self">Named Value References</a></li>
+              <li class="toc-item"><a href="#math" target="_self">Math</a>
+                <ol class="toc-item">
+                  <li class="toc-item"><a href="#basic" target="_self">Basic</a></li>
+                  <li class="toc-item"><a href="#advanced" target="_self">Advanced</a></li>
+                  <li class="toc-item"><a href="#spreadsheets" target="_self">Spreadsheets</a></li>
+                </ol>
+              </li>
+              <li class="toc-item"><a href="#inline-data" target="_self">Inline Data</a></li>
+              <li class="toc-item"><a href="#macro-utility-functions" target="_self">Macro Utility Functions</a></li>
+              <li class="toc-item"><a href="#computational-fenced-code" target="_self">Computational Fenced Code</a>
+                <ol class="toc-item">
+                  <li class="toc-item"><a href="#latex" target="_self">LaTeX</a></li>
+                  <li class="toc-item"><a href="#music" target="_self">Music</a></li>
+                  <li class="toc-item"><a href="#charts" target="_self">Charts</a></li>
+                </ol>
+              </li>
+              <li class="toc-item"><a href="#repls" target="_self">REPLS, a.k.a. Cells</a></li>
+              <li class="toc-item"><a href="#tailmatter" target="_self">Document Data (Tailmatter)</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li class="toc-item"><a href="#errors" target="_self">Error Handling</a></li>
+      <li class="toc-item"><a href="#security" target="_self">Security</a></li>
+      <li class="toc-item"><a href="#license" target="_self">License</a></li>
+    <li class="toc-item"><a href="#footnotes" target="_self">Footnotes</a></li></ol>
+    <h1 id="extras" title="Markdown Extras" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Markdown Extras<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↑</a><a target="_self" href="#frontmatter" title="Frontmatter" class="ah-nav">↓</a></h1>
+    <p>
+      Computational markdown assumes the support of extras notation introduced by PHP
+      Markdown. Some Markdown can be immediately followed by data inside <code>{}</code>.
+    </p>
+    <ul>
+      <li>
+        <code>#&lt;id&gt;</code> sets an <code>id</code> on the HTML element generated by the Markdown. This is useful for links and Computational
+        Markdown named values, a.k.a. variables.
+      </li>
+      <li><code>.&lt;css class name&gt;</code> adds the <code>css class name</code> to the list of classes for the HTML element. Multiple classes are allowed.</li>
+      <li>
+        <code>&lt;attribute name&gt;</code>="", sets the <code>attribute name</code> on the generated HTML to the <code>value</code> inside the quotes.
+        Attribute names are restricted to those listed in the Markdown translation tables in this document. <strong>Note</strong>: all
+        attributes starting with "on" will always be ignored for security reasons and <code>style</code> is only supported on some elements.
+      </li>
+      <li><code>checked</code>, for Markdown that translates to HTML elements that support the unary <code>checked</code> attribute.</li>
+      <li><code>hidden</code>, to hide the generated HTML element (useful for data or comments)</li>
+    </ul>
+    <h1 id="frontmatter" title="Frontmatter" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Frontmatter<a target="_self" href="#extras" title="Markdown Extras" class="ah-nav">↑</a><a target="_self" href="#computational-markdown" title="Computational Markdown" class="ah-nav">↓</a></h1>
+    <p>Computational markdown assumes the support of frontmatter in <code>YAML</code> format.</p>
+    <p>A title value is converted to a <code>&lt;title&gt;</code> element in the output HTML.</p>
+    <p>A target value is set as the target window or tab for links using the <code>&lt;base&gt;</code> element.</p>
+    <p>All other values are converted to <code>&lt;meta&gt;</code> elements.</p>
+    <pre><code class="hljs language-yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">NerdEditor</span>
+<span class="hljs-attr">licensor:</span> <span class="hljs-string">AnyWhichWay</span>
+<span class="hljs-attr">documentationLicense:</span> <span class="hljs-string">Creative</span> <span class="hljs-string">Commons</span>
+<span class="hljs-attr">sourceCodeLicense:</span> <span class="hljs-string">AGPL</span>
+<span class="hljs-meta">---
+</span></code></pre>
+    <p>results in:</p>
+    <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>NerdEditor<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licensor"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"AnyWhichWay"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"documentationLicense"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Creative Commons"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sourceCodeLicense"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"AGPL"</span>&gt;</span>
+</code></pre>
+    <h1 id="computational-markdown" title="Computational Markdown" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Computational Markdown<a target="_self" href="#frontmatter" title="Frontmatter" class="ah-nav">↑</a><a target="_self" href="#form-layout" title="Form Layout" class="ah-nav">↓</a></h1>
+    
+    <h2 id="form-layout" title="Form Layout" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Form Layout<a target="_self" href="#computational-markdown" title="Computational Markdown" class="ah-nav">↑</a><a target="_self" href="#macros" title="Macros" class="ah-nav">↓</a></h2>
+    <p>
+      Single lines starting with text, followed by a colon, then spaces and either a <code>var</code>, <code>input</code>, or
+      <code>textarea</code> and terminated with a <code>\</code> will put sequential lines into a form layout that respects spaces
+      so that fields can be aligned.
+    </p>
+    <pre><code class="hljs language-markdown">Cash:        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span>&gt;</span></span>:value[50]{#pettycash}<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span></span>\
+Checking:    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span>&gt;</span></span>:value[2]{#checking}<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span></span>\
+Expense:     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"expense"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span>&gt;</span></span>\
+Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span>&gt;</span></span>:value[]{#total :="${![#pettycash] + ![#checking] - ![#expense]}"}<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span></span>\
+</code></pre>
+    <h2 id="macros" title="Macros" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Macros<a target="_self" href="#form-layout" title="Form Layout" class="ah-nav">↑</a><a target="_self" href="#comments-and-hidden-data" title="Comments and Hidden Data" class="ah-nav">↓</a></h2>
+    <p>See <a href="#form-layout">Form Layout</a> above for the definition of this form.</p>
+    <p>
+      <label style="display:block;font-family:monospace">Cash:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="pettycash">50</span></var></label>
+      <label style="display:block;font-family:monospace">Checking:&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="checking">2</span></var></label>
+      <label style="display:block;font-family:monospace">Expense:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="expense" value="0"></label>
+      <label style="display:block;font-family:monospace">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="total" data-string-template="${![#pettycash] + ![#checking] - ![#expense]}">52</span></var></label>
+    </p>
+    <p>
+      Input fields can also be used for training: <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>. Here, we insert an unnamed value, i.e. just text after an input
+      field. Every time the input changes, the adjacent text will get updated.
+    </p>
+    <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"q1"</span> <span class="hljs-attr">data-default</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"What is the answer?"</span>&gt;</span></span>&nbsp;:value[]{:="${![#q1]===4 ? 'Correct!' : isNaN(![#q1]) ? '' : 'Incorrect!'}"}`
+</code></pre>
+    <p>What is 2 + 2: <input id="q1" data-default="NaN" placeholder="What is the answer?">&nbsp;<span data-string-template="${![#q1]===4 ? 'Correct!' : isNaN(![#q1]) ? '' : 'Incorrect!'}"></span></p>
+    <p>
+      Note, Computational Markdown supports a non-standard HTML attribute, <code>default</code> on tags that are referenced by
+      macros. This is converted to <code>data-default</code> during transpilation to HTML. It helps ensure macros do not throw errors
+      due to the presence of undefined values.
+    </p>
+    <p>
+      Based on the above, you can see that directives of the form <code>:value[&lt;some value&gt;]{#&lt;some id&gt;}</code> are used
+      to insert variables into documents.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Markdown</th>
+          <th>Display</th>
+          <th>Extras</th>
+          <th>Attribute Extras</th>
+          <th>Computational</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>:value[extra]{#&lt;id&gt;}</code></td>
+          <td>extra</td>
+          <td>✓</td>
+          <td><code>:</code></td>
+          <td>✓</td>
+        </tr>
+      </tbody>
+    </table>
+    <dl>
+      <dt>Directive</dt>
+      <dd></dd>
+      <dd>A token preceded by `:` or `::`. The optional data inside the `[]` of a directive is used as the inner content of generated HTML. The directive can be named and styling can be applied by using extras `{}` notation. If the token is preceded by `:` it is displayed inline. If it is preceded by `::` it is displayed in its own paragraph.</dd>
+    </dl>
+    <dl>
+      <dt>Macro</dt>
+      <dd></dd>
+      <dd>A value directive with an attribute ":" containing a string template, e.g.. `:value[]{:="The square root of 24 is ${Math.sqrt(24)}"}`</dd>
+      <dd>A Markdown link prefixed by '!'. See [Inline Data](#inline-data) below.</dd>
+      <dd>Fenced code followed by `()`. See [Math]($math) and [Fenced Code Blocks](#fenced-code-blocks) below.</dd>
+    </dl>
+    <p>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">String templates</a> are the
+      standard way of creating dynamic strings in JavaScript.
+    </p>
+    <p>
+      String templates always return strings, but Computational Markdown coerces the strings into HTML<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>, numbers, booleans,
+      objects, and arrays as necessary.
+    </p>
+    <h3 id="comments-and-hidden-data" title="Comments and Hidden Data" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Comments and Hidden Data<a target="_self" href="#macros" title="Macros" class="ah-nav">↑</a><a target="_self" href="#named-value-references" title="Named Value References" class="ah-nav">↓</a></h3>
+    <p>You can also use the <code>:value</code> directive to insert hidden data or comments.</p>
+    <pre><code class="hljs language-csharp">:<span class="hljs-keyword">value</span>[This <span class="hljs-keyword">is</span> a comment]{hidden}
+</code></pre>
+    <p><span hidden="">This is a comment</span></p>
+    <p>You will have to inspect the source to see the impact of the above.</p>
+    <h3 id="named-value-references" title="Named Value References" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Named Value References<a target="_self" href="#comments-and-hidden-data" title="Comments and Hidden Data" class="ah-nav">↑</a><a target="_self" href="#math" title="Math" class="ah-nav">↓</a></h3>
+    <p>
+      In the code for the <code>Total</code> field above, <code>:value[]{#total :="${![#pettycash] + ![#checking] - ![#expense]}"}</code>, you can
+      see it uses a string template containing <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">CSS selectors</a>
+      wrapped in <code>[]</code>s prefixed by an <code>!</code>, e.g. <code>![&lt;selector&gt;]</code>.<sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>. This is read as "the parsed value of the <code>textContent</code>
+      of the element(s) returned by selector <code>&lt;selector&gt;</code>".
+    </p>
+    <p>
+      By convention, named values, a.k.a. variables, are typically created using <code>:value</code>. However, they can actually be
+      any HTML element or elements selectable using CSS.
+    </p>
+    <p>
+      Ids, selectors starting with <code>#</code>, are typically used, but any selector is allowed so long as it is expressed on one line
+      inside <code>[]</code>.
+    </p>
+    
+    <p>
+      The value of an element is its text content coerced into a JavaScript value. An array of values can be retrieved by
+      ending the selector in <code>[]</code>.<sup><a href="#user-content-fn-4" id="user-content-fnref-4" data-footnote-ref="" aria-describedby="footnote-label">4</a></sup>
+    </p>
+    <h3 id="math" title="Math" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Math<a target="_self" href="#named-value-references" title="Named Value References" class="ah-nav">↑</a><a target="_self" href="#basic" title="Basic" class="ah-nav">↓</a></h3>
+    <h4 id="basic" title="Basic" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Basic<a target="_self" href="#math" title="Math" class="ah-nav">↑</a><a target="_self" href="#advanced" title="Advanced" class="ah-nav">↓</a></h4>
+    <p>Basic math expressions can be evaluated or solved using the JavaScript math object.</p>
+    <ul>
+      <li>π * 3^2 = <span data-string-template="${Math.PI * Math.pow(3,2)}">28.274333882308138</span></li>
+      <li>π * r^2 when r = 3 is <code>`${Math.PI * solve('Math.pow(r,2)',{r:3})}`()</code> = <span data-string-template="${Math.PI * solve('Math.pow(r,2)',{r:3})}">28.274333882308138</span></li>
+      <li>π * r^2 when r = 3 is <code>`${Math.PI * Math.pow(r,2)}`({r:3})</code> = <span data-string-template="${Math.PI * Math.pow(3,2)}">28.274333882308138</span></li>
+    </ul>
+    <h4 id="advanced" title="Advanced" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Advanced<a target="_self" href="#basic" title="Basic" class="ah-nav">↑</a><a target="_self" href="#spreadsheets" title="Spreadsheets" class="ah-nav">↓</a></h4>
+    <p>
+      The macro evaluator is preloaded with <a href="https://mathjs.org/" target="_tab">MathJS</a> so you can use its power in your
+      document.
+    </p>
+    <p>This supports simplifying algebraic expressions or computing a derivative.</p>
+    
+    <ul>
+      <li>simplify('x*y-y*x') =&nbsp;<span data-string-template="${simplify('x*y-y*x')}">0</span></li>
+      <li>derivative('x^2 + x', 'x') =&nbsp; <span data-string-template="${derivative('x^2 + x', 'x')}">2 * x + 1</span></li>
+    </ul>
+    <p>
+      <code>`${derivative('x^2 + x', 'x')}`()</code> is shorthand for <code>:value[]{:="derivative('x^2 + x', 'x')"}</code>, which is
+      useful when you do not need to create a named value from a macro.
+    </p>
+    <p>Prefixing MathJS functions with <code>math.</code> is not be necessary.</p>
+    
+    <p>As with basic math, expressions can be solved by providing arguments, e.g.</p>
+    <ul>
+      <li>solve(derivative('x^2 + x', 'x'),{x:2}) =&nbsp;<span data-string-template="${solve(derivative('x^2 + x', 'x'),{x:2})}">5</span></li>
+    </ul>
+    <p>
+      Note, in the above example <code>{x:2}</code> is not passed in because we are trying to solve the derivative. Passing <code>{x:2}</code> at
+      the top level would result in an error: <span data-string-template="${solve(derivative('2^2 + 2', '2'))}">{"stringTemplateLiteralError":"TypeError: Unexpected type of argument in function derivative (expected: SymbolNode or identifier, actual: string, index: 1)"}</span>    </p>
+    <h4 id="spreadsheets" title="Spreadsheets" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Spreadsheets<a target="_self" href="#advanced" title="Advanced" class="ah-nav">↑</a><a target="_self" href="#inline-data" title="Inline Data" class="ah-nav">↓</a></h4>
+    <p>
+      If an id is provided for a table and it is also give class <code>cm-spreadsheet</code> using extras <code>{}</code> notation, the first row
+      and column are used for generating ids that can be used in macros. Using extras notation, classes can be applied to columns.
+      (You will need to include your own <code>style</code> block.)
+    </p>
+    
+    <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span>
+<span class="hljs-code">    .currency-usd::before { content: "$"}
+&lt;/style&gt;
+|            | Amounts{.currency-usd}     |
+| ---------- | ----------- |
+| Petty Cash | 10          |
+| Checking   | 20          |
+| Total      | `${![#mytable_Amounts_Petty_Cash]+![#mytable_Amounts_Checking]}`() |
+{#mytable .cm-spreadsheet}
+</span></code></pre>
+    <table id="mytable" class="cm-spreadsheet">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Amounts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Petty Cash</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>Checking</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td><span data-string-template="${![#mytable_Amounts_Petty_Cash]+![#mytable_Amounts_Checking]}">NaN</span></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <h3 id="inline-data" title="Inline Data" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Inline Data<a target="_self" href="#spreadsheets" title="Spreadsheets" class="ah-nav">↑</a><a target="_self" href="#macro-utility-functions" title="Macro Utility Functions" class="ah-nav">↓</a></h3>
+    <p>
+      Data can be inlined by prefixing links with a <code>!</code> or <code>!!</code>. A single <code>!</code> will inline the data when readers access the document.
+      The data will be dynamic. A double <code>!!</code> will inline the data when the document is transpiled to HTML. The data will be
+      static (unless the document is being transpiled on the fly).
+    </p>
+    <p><em>Earthquakes In Past Hour</em></p>
+    <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"quakes"</span>&gt;</span></span>
+<span class="hljs-code">    !(https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson)
+&lt;/var&gt;
+</span></code></pre><var id="quakes" src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson">{"type":"FeatureCollection","metadata":{"generated":1668519810000,"url":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson","title":"USGS All Earthquakes, Past Hour","status":200,"api":"1.10.3","count":3},"features":[{"type":"Feature","properties":{"mag":0.35,"place":"5km WNW of The Geysers, CA","time":1668519418740,"updated":1668519515720,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807746","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807746.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":2,"net":"nc","code":"73807746","ids":",nc73807746,","sources":",nc,","types":",nearby-cities,origin,phase-data,","nst":7,"dmin":0.01142,"rms":0.01,"gap":194,"magType":"md","type":"earthquake","title":"M 0.4 - 5km WNW of The Geysers, CA"},"geometry":{"type":"Point","coordinates":[-122.8134995,38.7963333,3.73]},"id":"nc73807746"},{"type":"Feature","properties":{"mag":1.6,"place":"60 km ESE of Denali Park, Alaska","time":1668518239686,"updated":1668518362862,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022ensa134","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022ensa134.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":39,"net":"ak","code":"022ensa134","ids":",ak022ensa134,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":0.77,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.6 - 60 km ESE of Denali Park, Alaska"},"geometry":{"type":"Point","coordinates":[-147.729,63.6058,0]},"id":"ak022ensa134"},{"type":"Feature","properties":{"mag":0.69,"place":"4km SE of Yucca Valley, CA","time":1668517264600,"updated":1668517471281,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ci40132663","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40132663.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":7,"net":"ci","code":"40132663","ids":",ci40132663,","sources":",ci,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":13,"dmin":0.01821,"rms":0.16,"gap":127,"magType":"ml","type":"earthquake","title":"M 0.7 - 4km SE of Yucca Valley, CA"},"geometry":{"type":"Point","coordinates":[-116.3988333,34.086,7.91]},"id":"ci40132663"}],"bbox":[-147.729,34.086,0,-116.3988333,63.6058,7.91]}</var>
+    
+    <h3 id="macro-utility-functions" title="Macro Utility Functions" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Macro Utility Functions<a target="_self" href="#inline-data" title="Inline Data" class="ah-nav">↑</a><a target="_self" href="#computational-fenced-code" title="Computational Fenced Code" class="ah-nav">↓</a></h3>
+    <p>There are some macro utility functions in addition to <a href="#math">math</a>.</p>
+    <ul>
+      <li>
+        <code>ul</code> takes a JSON array and returns the HTML for an unordered list using a callback function to provide the content of
+        the list items, e.g. <code>!`${ul(![#astros].people,({name,craft}) =&gt; name + ' flying in ' + craft)}`</code>.
+      </li>
+      <li><code>ol</code> does the same as <code>ul</code>, but returns the HTML for an ordered list</li>
+      <li>
+        <code>map</code>, <code>reduce</code>, <code>filter</code> and other JavaScript built-ins can also be used. They should return a string, which will
+        be sanitized if HTML.
+      </li>
+    </ul>
+    <p><em>Earthquake Summary</em></p>
+    
+    
+    <pre><code class="hljs language-markdown"><span class="hljs-code">`${ul(![#quakes].features,({properties}) =&gt; properties.mag + '  ' + properties.place)}`</span>()
+</code></pre>
+    <p><span data-string-template="${ul(![#quakes].features,({properties}) => properties.mag + ' ' + properties.place)}"><ul><li>0.35 5km WNW of The Geysers, CA</li>
+<li>1.6 60 km ESE of Denali Park, Alaska</li>
+<li>0.69 4km SE of Yucca Valley, CA</li>
+</ul></span></p>
+    <h3 id="computational-fenced-code" title="Computational Fenced Code" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Computational Fenced Code<a target="_self" href="#macro-utility-functions" title="Macro Utility Functions" class="ah-nav">↑</a><a target="_self" href="#latex" title="LaTeX" class="ah-nav">↓</a></h3>
+    <p>Fenced code can be "executed" based on its language declaration by adding <code>()</code> after the fence.</p>
+    <p>
+      For blocks (not inlines), it is recommended you put the <code>()</code> marking the block as computational on the line immediately
+      after the fence to improve code formatting in the editor itself. However, it will also work on the fence line.
+    </p>
+    <p>Showing the source of fenced code can be toggled with a <code>+</code> sign before the <code>()</code>.</p>
+    <p>
+      The examples of computational fenced code for LaTeX, music, and charts below supported by <a href="https://www.nerdeditor.com">NerdEditor</a>. They are not
+      a part of the Computational Markdown spec.
+    </p>
+    <h4 id="latex" title="LaTeX" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>LaTeX<a target="_self" href="#computational-fenced-code" title="Computational Fenced Code" class="ah-nav">↑</a><a target="_self" href="#music" title="Music" class="ah-nav">↓</a></h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Markdown</th>
+          <th>Display</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>!`latex Lift = \frac{1}{2} \rho v&lt;sup&gt;2 S C_L`()</code></td>
+          <td><ne-latex title=" Lift = \frac{1}{2} \rho v2 S C_L"> Lift = \frac{1}{2} \rho v2 S C_L</ne-latex></td>
+        </tr>
+        <tr>
+          <td><code>!`latex [\ce{H2O(l)}] = \pu{75.3 J // mol K}`()</code></td>
+          <td><ne-latex title=" [\ce{H2O(l)}] = \pu{75.3 J // mol K}"> [\ce{H2O(l)}] = \pu{75.3 J // mol K}</ne-latex></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Fenced blocks are supported in addition to inlines, e.g.</p>
+    <pre><code class="hljs language-markdown">‷latex
+Lift = \frac{1}{2} \rho v^2 S C<span class="hljs-emphasis">_L\
+‷()
+</span></code></pre>
+    <p><ne-latex title="Lift = \frac{1}{2} \rho v^2 S C_L\
+">Lift = \frac{1}{2} \rho v^2 S C_L\
+</ne-latex></p>
+    <p></p>
+    
+    
+    
+    <h4 id="music" title="Music" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Music<a target="_self" href="#latex" title="LaTeX" class="ah-nav">↑</a><a target="_self" href="#charts" title="Charts" class="ah-nav">↓</a></h4>
+    <p>Music using <a href="https://abcnotation.com/" target="_tab">ABC Notation</a>.</p>
+    <pre><code class="hljs language-markdown">‷abc
+X: 1
+T: Nokia Tune
+M: 3/4
+L: 1/8
+K: Amaj
+|: e'd' f2 g2 | c'b d2 e2 | ba c2 e2 | a6 |
+‷()
+</code></pre>
+    
+    
+    <p><sheet-music title="Nokia Tune" style="display: block; max-width: 98%;">X: 1
+T: Nokia Tune
+M: 3/4
+L: 1/8
+K: Amaj
+|: e'd' f2 g2 | c'b d2 e2 | ba c2 e2 | a6 |
+</sheet-music></p>
+    <p></p>
+    <h4 id="charts" title="Charts" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Charts<a target="_self" href="#music" title="Music" class="ah-nav">↑</a><a target="_self" href="#repls" title="REPLS, a.k.a. Cells" class="ah-nav">↓</a></h4>
+    <p>Build charts using the <a href="https://plotly.com/graphing-libraries/" target="_tab">Plotly Charting Library</a> with imported data. [^5]</p>
+    <pre><code class="hljs language-markdown">:value[!! (./demo-data/chart.json5)]{#chart hidden}
+
+‷plotly
+<span class="hljs-code">    ![#chart]
+‷()
+</span></code></pre>
+    <p><span id="chart" hidden="">{
+data: [ {
+x: [0, 1, 2, 3, 4, 5, 6],
+y: [1, 9, 4, 7, 5, 2, 4],
+mode: 'markers',
+marker: {
+size: [20, 40, 25, 10, 60, 90, 30]
+}
+}],
+layout: {
+title: 'My Chart'
+}
+}</span></p>
+    <p><ne-chart>{"data":[{"x":[0,1,2,3,4,5,6],"y":[1,9,4,7,5,2,4],"mode":"markers","marker":{"size":[20,40,25,10,60,90,30]}}],"layout":{"title":"My Chart"}}
+</ne-chart></p>
+    <p></p>
+    <h3 id="repls" title="REPLS, a.k.a. Cells" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>REPLS, a.k.a. Cells<a target="_self" href="#charts" title="Charts" class="ah-nav">↑</a><a target="_self" href="#tailmatter" title="Document Data (Tailmatter)" class="ah-nav">↓</a></h3>
+    <p>
+      Support for REPLs, a.k.a. Cells, is part of the spec, although implementors may
+      choose to provide varying capabilities. The REPL below is that provided by NerdEditor.
+    </p>
+    
+    
+    <p>REPLs, a.k.a. Cells, can be used to document source or provide training material by pre-populating some sections.</p>
+    <p>To show a section use its name as a unary attribute for the <code>ne-cell</code> tag.</p>
+    <p>To set <code>linenumbers</code> or <code>readonly</code> to default on, use them as unary attributes in the <code>ne-cell</code> tag.</p>
+    
+    
+    <p>Turn on and off <code>readonly</code> and <code>linenumbers</code> in the slots used to provide default values.</p>
+    
+    <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ne-cell</span> <span class="hljs-attr">css</span> <span class="hljs-attr">body</span> <span class="hljs-attr">script</span> <span class="hljs-attr">linenumbers</span> <span class="hljs-attr">replstyle</span>=<span class="hljs-string">"border:solid black 1px;height:10em"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"css"</span>&gt;</span>h1 { font-size:small}<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"body"</span>  <span class="hljs-attr">readonly</span> <span class="hljs-attr">linenumbers</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"resize:both"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Test<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"script"</span>&gt;</span>(function() { console.log(); })()<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ne-cell</span>&gt;</span>
+</code></pre>
+    <ne-cell css="" body="" script="" linenumbers="" replstyle="border:solid black 1px;height:10em">
+      <slot name="css">h1 { font-size:small}</slot>
+      <slot name="body" readonly="" linenumbers="false" style="resize:both">
+        <h1>Test</h1>
+      </slot>
+      <slot name="script">(function() { console.log(); })()</slot>
+    </ne-cell>
+    <p>The NerdEditor cell is based on <a href="https://medium.com/@anywhichway/how-to-host-a-repl-342bc0e15f5d" target="_tab">repl-host</a>.</p>
+    <h3 id="tailmatter" title="Document Data (Tailmatter)" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Document Data (Tailmatter)<a target="_self" href="#repls" title="REPLS, a.k.a. Cells" class="ah-nav">↑</a><a target="_self" href="#errors" title="Error Handling" class="ah-nav">↓</a></h3>
+    
+    
+    <p>
+      The last section of a Computational Markdown document can be delimited by <code>---</code> and contains a
+      <a href="https://www.json5.org" target="_tab">JSON5</a> object. The final <code>---</code> must NOT be followed by a new line or any other
+      characters.
+    </p>
+    <p>The object is available to macros as <code>document.data</code>.</p>
+    <p>If frontmatter is provided in the document, then the property 'page' is added with all the frontmatter variables.</p>
+    <p>
+      The property <code>document.data.urls</code> cab be used to store data URLs for images and other content. This object has the ids of the
+      content as keys and data URLs as values.
+    </p>
+    <p>
+      The object <code>document.data</code> is a special object that is exported to the WebWorker that evaluates templates, although
+      the <code>urls</code> property is deleted because it tends to be large.
+    </p>
+    <h1 id="errors" title="Error Handling" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Error Handling<a target="_self" href="#tailmatter" title="Document Data (Tailmatter)" class="ah-nav">↑</a><a target="_self" href="#security" title="Security" class="ah-nav">↓</a></h1>
+    <p>Loops in macros are trapped.</p>
+    <pre><code class="hljs language-html">Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"loop"</span>&gt;</span>!`${![#total] + ![#pettycash]}`<span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span>
+Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vloop"</span>&gt;</span>!`${![#total] + ![#vloop]}`<span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span>
+</code></pre>
+    <p>
+      Loop: <var id="loop"><span data-string-template="${![#total] + ![#pettycash]}">102</span></var>
+      Vicious Loop: <var id="vloop"><span data-string-template="${![#total] + ![#vloop]}" class="chtml-error">Error processing ${![#total] + ![#vloop]}. Check for loop in dependencies.</span></var>
+    </p>
+    <p>
+      Errors or issues that are known to not impact the document or are a result of author mistakes are logged to the
+      browser debug console.
+    </p>
+    <h1 id="security" title="Security" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Security<a target="_self" href="#errors" title="Error Handling" class="ah-nav">↑</a><a target="_self" href="#license" title="License" class="ah-nav">↓</a></h1>
+    <p>Macros and fenced code run in WebWorkers and any HTML returned is sanitized.</p>
+    <p>REPLs run in their own iframes.</p>
+    <h1 id="license" title="License" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>License<a target="_self" href="#security" title="Security" class="ah-nav">↑</a><a target="_self" href="#footnotes" title="Footnotes" class="ah-nav">↓</a></h1>
+    <p>
+      Although the capitalized term Computational Markdown is trademarked, this content
+      andd the spec are licenced under Creative Commons. Anyone is free to implement
+      Computational Markdown.
+    </p>
+    <h1 id="footnotes" title="Footnotes" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Footnotes<a target="_self" href="#license" title="License" class="ah-nav">↑</a><a target="_self" href="#footnote-label" title="Footnotes" class="ah-nav">↓</a></h1><section data-footnotes="" class="footnotes">
+      <h2 class="sr-only ah-heading" id="footnote-label" title="Footnotes"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Footnotes<a target="_self" href="#footnotes" title="Footnotes" class="ah-nav">↑</a></h2>
+      <ol>
+        <li id="user-content-fn-1">
+          <p>
+            Note, the correct values can still be viewed in the source of the resulting HTML. You will
+            need to use a specialized education browser to stop this, or implement server code that is called by something like this
+            <code>${await isCorrect("#q1",![#q1]) ? 'Correct!' : isNaN(![#q1]) ? '' : 'Incorrect!'}</code>. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a>
+          </p>
+        </li>
+        <li id="user-content-fn-2">
+          <p>Strings converted into HTML are sanitizied to help avoid cross site script (^XSS) attacks. <a href="#user-content-fnref-2" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a></p>
+        </li>
+        <li id="user-content-fn-3">
+          <p>
+            The <code>![\&lt;selector\&gt;]</code> was chosen over <code>=[\&lt;selector\&gt;]</code> because <code>![\&lt;value\&gt;]</code> is almost meaningless in the
+            JavaScript that may be present in string templates. In fact, <code>[]==![]</code> is true! <a href="#user-content-fnref-3" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a>
+          </p>
+        </li>
+        <li id="user-content-fn-4">
+          <p>In JavaScript this is the difference between using <code>querySelector</code> and <code>querySelectorAll</code>. <a href="#user-content-fnref-4" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a></p>
+        </li>
+      </ol>
+    </section>
+  
+
+<ol class="toc-item" id="ah-floating-toc" style="display: none; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; z-index: 100; opacity: 1; background-color: white; border: 1px solid gray; max-height: 250px; overflow: auto; position: absolute;"><li value="0"><a href="#table-of-contents" target="_self">Table Of Contents</a></li>
+      <li class="toc-item"><a href="#extras" target="_self">Markdown Extras</a></li>
+      <li class="toc-item"><a href="#frontmatter" target="_self">Frontmatter</a></li>
+      <li class="toc-item"><a href="#computational-markdown" target="_self">Computational Markdown</a>
+        <ol class="toc-item">
+          <li class="toc-item"><a href="#form-layout" target="_self">Form Layout</a></li>
+          <li class="toc-item"><a href="#macros" target="_self">Macros</a>
+            <ol class="toc-item">
+              <li class="toc-item"><a href="#comments-and-hidden-data" target="_self">Comments and Hidden Data</a></li>
+              <li class="toc-item"><a href="#named-value-references" target="_self">Named Value References</a></li>
+              <li class="toc-item"><a href="#math" target="_self">Math</a>
+                <ol class="toc-item">
+                  <li class="toc-item"><a href="#basic" target="_self">Basic</a></li>
+                  <li class="toc-item"><a href="#advanced" target="_self">Advanced</a></li>
+                  <li class="toc-item"><a href="#spreadsheets" target="_self">Spreadsheets</a></li>
+                </ol>
+              </li>
+              <li class="toc-item"><a href="#inline-data" target="_self">Inline Data</a></li>
+              <li class="toc-item"><a href="#macro-utility-functions" target="_self">Macro Utility Functions</a></li>
+              <li class="toc-item"><a href="#computational-fenced-code" target="_self">Computational Fenced Code</a>
+                <ol class="toc-item">
+                  <li class="toc-item"><a href="#latex" target="_self">LaTeX</a></li>
+                  <li class="toc-item"><a href="#music" target="_self">Music</a></li>
+                  <li class="toc-item"><a href="#charts" target="_self">Charts</a></li>
+                </ol>
+              </li>
+              <li class="toc-item"><a href="#repls" target="_self">REPLS, a.k.a. Cells</a></li>
+              <li class="toc-item"><a href="#tailmatter" target="_self">Document Data (Tailmatter)</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li class="toc-item"><a href="#errors" target="_self">Error Handling</a></li>
+      <li class="toc-item"><a href="#security" target="_self">Security</a></li>
+      <li class="toc-item"><a href="#license" target="_self">License</a></li>
+    <li class="toc-item"><a href="#footnotes" target="_self">Footnotes</a></li></ol>
+<template id="document-data">{"nePreview":true,"page":{"title":"Computational Markdown","licensor":"AnyWhichWay","documentationLicense":"Creative Commons","target":"_tab"},"urls":{}}</template>
+<script type="module">import {attach} from "https://www.nerdeditor.com/src/computational-html.js"; import {activate} from "https://www.nerdeditor.com/src/autohelm.js"; activate(document.body); attach(document.body);</script></body></html>
