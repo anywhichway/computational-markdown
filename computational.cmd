@@ -14,7 +14,7 @@ do the work for you!
 Computational Markdown adds support for form layout, macros (including list layout and advanced math), reactive
 computation, data import, language processing, e.g. Latex, and document data (tailmatter).
 
-This document provided an informal specificaiton for Computational Markdown.
+This document provides an informal specificaiton for Computational Markdown.
 
 The use of Edge or Chrome is recommended. Firefox, has not yet released full support for modern Web workers.
 You will encounter this error: `Error: Dynamic module import is disabled or not supported in this context`.
