@@ -149,6 +149,46 @@ td {
   
   
     
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
+
+  
+  
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css">
     <h1 id="introduction-to-computational-markdown™" title="Introduction To Computational Markdown™" class="ah-heading">Introduction To Computational Markdown™<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↓</a></h1>
     <p>
@@ -160,6 +200,7 @@ td {
       Computational Markdown adds support for form layout, macros (including list layout and advanced math), reactive
       computation, data import, language processing, e.g. Latex, and document data (tailmatter).
     </p>
+    <p>This document provided an informal specificaiton for Computational Markdown.</p>
     <p>
       The use of Edge or Chrome is recommended. Firefox, has not yet released full support for modern Web workers.
       You will encounter this error: <code>Error: Dynamic module import is disabled or not supported in this context</code>.
@@ -199,6 +240,7 @@ td {
       </li>
       <li class="toc-item"><a href="#errors" target="_self">Error Handling</a></li>
       <li class="toc-item"><a href="#security" target="_self">Security</a></li>
+      <li class="toc-item"><a href="#architecture" target="_self">Architecture</a></li>
       <li class="toc-item"><a href="#license" target="_self">License</a></li>
     <li class="toc-item"><a href="#footnotes" target="_self">Footnotes</a></li></ol>
     <h1 id="extras" title="Markdown Extras" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Markdown Extras<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↑</a><a target="_self" href="#frontmatter" title="Frontmatter" class="ah-nav">↓</a></h1>
@@ -239,7 +281,6 @@ td {
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sourceCodeLicense"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"AGPL"</span>&gt;</span>
 </code></pre>
     <h1 id="computational-markdown" title="Computational Markdown" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Computational Markdown<a target="_self" href="#frontmatter" title="Frontmatter" class="ah-nav">↑</a><a target="_self" href="#form-layout" title="Form Layout" class="ah-nav">↓</a></h1>
-    
     <h2 id="form-layout" title="Form Layout" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Form Layout<a target="_self" href="#computational-markdown" title="Computational Markdown" class="ah-nav">↑</a><a target="_self" href="#macros" title="Macros" class="ah-nav">↓</a></h2>
     <p>
       Single lines starting with text, followed by a colon, then spaces and either a <code>var</code>, <code>input</code>, or
@@ -336,7 +377,6 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       Ids, selectors starting with <code>#</code>, are typically used, but any selector is allowed so long as it is expressed on one line
       inside <code>[]</code>.
     </p>
-    
     <p>
       The value of an element is its text content coerced into a JavaScript value. An array of values can be retrieved by
       ending the selector in <code>[]</code>.<sup><a href="#user-content-fn-4" id="user-content-fnref-4" data-footnote-ref="" aria-describedby="footnote-label">4</a></sup>
@@ -355,7 +395,6 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       document.
     </p>
     <p>This supports simplifying algebraic expressions or computing a derivative.</p>
-    
     <ul>
       <li>simplify('x*y-y*x') =&nbsp;<span data-string-template="${simplify('x*y-y*x')}">0</span></li>
       <li>derivative('x^2 + x', 'x') =&nbsp; <span data-string-template="${derivative('x^2 + x', 'x')}">2 * x + 1</span></li>
@@ -365,7 +404,6 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       useful when you do not need to create a named value from a macro.
     </p>
     <p>Prefixing MathJS functions with <code>math.</code> is not be necessary.</p>
-    
     <p>As with basic math, expressions can be solved by providing arguments, e.g.</p>
     <ul>
       <li>solve(derivative('x^2 + x', 'x'),{x:2}) =&nbsp;<span data-string-template="${solve(derivative('x^2 + x', 'x'),{x:2})}">5</span></li>
@@ -379,7 +417,6 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       and column are used for generating ids that can be used in macros. Using extras notation, classes can be applied to columns.
       (You will need to include your own <code>style</code> block.)
     </p>
-    
     <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span>
 <span class="hljs-code">    .currency-usd::before { content: "$"}
 &lt;/style&gt;
@@ -423,9 +460,11 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"quakes"</span>&gt;</span></span>
 <span class="hljs-code">    !(https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson)
 &lt;/var&gt;
-</span></code></pre><var id="quakes" src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson">{"type":"FeatureCollection","metadata":{"generated":1668519810000,"url":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson","title":"USGS All Earthquakes, Past Hour","status":200,"api":"1.10.3","count":3},"features":[{"type":"Feature","properties":{"mag":0.35,"place":"5km WNW of The Geysers, CA","time":1668519418740,"updated":1668519515720,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807746","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807746.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":2,"net":"nc","code":"73807746","ids":",nc73807746,","sources":",nc,","types":",nearby-cities,origin,phase-data,","nst":7,"dmin":0.01142,"rms":0.01,"gap":194,"magType":"md","type":"earthquake","title":"M 0.4 - 5km WNW of The Geysers, CA"},"geometry":{"type":"Point","coordinates":[-122.8134995,38.7963333,3.73]},"id":"nc73807746"},{"type":"Feature","properties":{"mag":1.6,"place":"60 km ESE of Denali Park, Alaska","time":1668518239686,"updated":1668518362862,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022ensa134","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022ensa134.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":39,"net":"ak","code":"022ensa134","ids":",ak022ensa134,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":0.77,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.6 - 60 km ESE of Denali Park, Alaska"},"geometry":{"type":"Point","coordinates":[-147.729,63.6058,0]},"id":"ak022ensa134"},{"type":"Feature","properties":{"mag":0.69,"place":"4km SE of Yucca Valley, CA","time":1668517264600,"updated":1668517471281,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ci40132663","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40132663.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":7,"net":"ci","code":"40132663","ids":",ci40132663,","sources":",ci,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":13,"dmin":0.01821,"rms":0.16,"gap":127,"magType":"ml","type":"earthquake","title":"M 0.7 - 4km SE of Yucca Valley, CA"},"geometry":{"type":"Point","coordinates":[-116.3988333,34.086,7.91]},"id":"ci40132663"}],"bbox":[-147.729,34.086,0,-116.3988333,63.6058,7.91]}</var>
+</span></code></pre><var id="quakes" src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson">{"type":"FeatureCollection","metadata":{"generated":1668523295000,"url":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson","title":"USGS All Earthquakes, Past Hour","status":200,"api":"1.10.3","count":8},"features":[{"type":"Feature","properties":{"mag":1.16,"place":"4km NNW of The Geysers, CA","time":1668522492550,"updated":1668523210298,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807766","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807766.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":21,"net":"nc","code":"73807766","ids":",nc73807766,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":10,"dmin":0.006929,"rms":0.03,"gap":91,"magType":"md","type":"earthquake","title":"M 1.2 - 4km NNW of The Geysers, CA"},"geometry":{"type":"Point","coordinates":[-122.7801666,38.8063316,0.81]},"id":"nc73807766"},{"type":"Feature","properties":{"mag":1.3,"place":"Central Alaska","time":1668522200473,"updated":1668522349350,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022enswr1r","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022enswr1r.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":26,"net":"ak","code":"022enswr1r","ids":",ak022enswr1r,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":0.35,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.3 - Central Alaska"},"geometry":{"type":"Point","coordinates":[-149.1265,62.3529,4.4]},"id":"ak022enswr1r"},{"type":"Feature","properties":{"mag":0.47,"place":"21 km SSW of Mammoth, Wyoming","time":1668521915960,"updated":1668522734090,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60032094","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60032094.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":3,"net":"uu","code":"60032094","ids":",uu60032094,","sources":",uu,","types":",origin,phase-data,","nst":9,"dmin":0.03396,"rms":0.12,"gap":108,"magType":"md","type":"earthquake","title":"M 0.5 - 21 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8038333,44.7953333,7.05]},"id":"uu60032094"},{"type":"Feature","properties":{"mag":0.71,"place":"22 km SSW of Mammoth, Wyoming","time":1668521888580,"updated":1668522670350,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60525137","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60525137.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":8,"net":"uu","code":"60525137","ids":",uu60525137,","sources":",uu,","types":",origin,phase-data,","nst":11,"dmin":0.02991,"rms":0.14,"gap":104,"magType":"md","type":"earthquake","title":"M 0.7 - 22 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8086667,44.7856667,6.19]},"id":"uu60525137"},{"type":"Feature","properties":{"mag":1.05,"place":"22 km SSW of Mammoth, Wyoming","time":1668521577380,"updated":1668522829260,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60525132","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60525132.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":17,"net":"uu","code":"60525132","ids":",uu60525132,","sources":",uu,","types":",origin,phase-data,","nst":12,"dmin":0.02733,"rms":0.17,"gap":103,"magType":"md","type":"earthquake","title":"M 1.1 - 22 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8121667,44.7896667,7.64]},"id":"uu60525132"},{"type":"Feature","properties":{"mag":1.44,"place":"11km E of Cloverdale, CA","time":1668521039770,"updated":1668523033282,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807756","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807756.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":32,"net":"nc","code":"73807756","ids":",nc73807756,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":26,"dmin":0.007155,"rms":0.04,"gap":109,"magType":"md","type":"earthquake","title":"M 1.4 - 11km E of Cloverdale, CA"},"geometry":{"type":"Point","coordinates":[-122.8929977,38.8100014,4.96]},"id":"nc73807756"},{"type":"Feature","properties":{"mag":1.5,"place":"46 km WNW of Tatitlek, Alaska","time":1668521003077,"updated":1668521171063,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022enssgxf","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022enssgxf.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":35,"net":"ak","code":"022enssgxf","ids":",ak022enssgxf,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":1.17,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.5 - 46 km WNW of Tatitlek, Alaska"},"geometry":{"type":"Point","coordinates":[-147.3998,61.0902,65.3]},"id":"ak022enssgxf"},{"type":"Feature","properties":{"mag":0.730000019,"place":"southeastern Missouri","time":1668520668900,"updated":1668521866160,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nm60500011","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nm60500011.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":8,"net":"nm","code":"60500011","ids":",nm60500011,","sources":",nm,","types":",origin,phase-data,","nst":5,"dmin":0.08801,"rms":0.180000007,"gap":198,"magType":"md","type":"earthquake","title":"M 0.7 - southeastern Missouri"},"geometry":{"type":"Point","coordinates":[-89.5534973144531,36.173168182373,10.789999961853]},"id":"nm60500011"}],"bbox":[-149.1265,36.173168182373,0.81,-89.553497314453,62.3529,65.3]}</var>
     
     <h3 id="macro-utility-functions" title="Macro Utility Functions" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Macro Utility Functions<a target="_self" href="#inline-data" title="Inline Data" class="ah-nav">↑</a><a target="_self" href="#computational-fenced-code" title="Computational Fenced Code" class="ah-nav">↓</a></h3>
+    
+    
     <p>There are some macro utility functions in addition to <a href="#math">math</a>.</p>
     <ul>
       <li>
@@ -439,13 +478,18 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       </li>
     </ul>
     <p><em>Earthquake Summary</em></p>
-    
-    
     <pre><code class="hljs language-markdown"><span class="hljs-code">`${ul(![#quakes].features,({properties}) =&gt; properties.mag + '  ' + properties.place)}`</span>()
 </code></pre>
-    <p><span data-string-template="${ul(![#quakes].features,({properties}) => properties.mag + ' ' + properties.place)}"><ul><li>0.35 5km WNW of The Geysers, CA</li>
-<li>1.6 60 km ESE of Denali Park, Alaska</li>
-<li>0.69 4km SE of Yucca Valley, CA</li>
+    
+    
+    <p><span data-string-template="${ul(![#quakes].features,({properties}) => properties.mag + ' ' + properties.place)}"><ul><li>1.16 4km NNW of The Geysers, CA</li>
+<li>1.3 Central Alaska</li>
+<li>0.47 21 km SSW of Mammoth, Wyoming</li>
+<li>0.71 22 km SSW of Mammoth, Wyoming</li>
+<li>1.05 22 km SSW of Mammoth, Wyoming</li>
+<li>1.44 11km E of Cloverdale, CA</li>
+<li>1.5 46 km WNW of Tatitlek, Alaska</li>
+<li>0.730000019 southeastern Missouri</li>
 </ul></span></p>
     <h3 id="computational-fenced-code" title="Computational Fenced Code" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Computational Fenced Code<a target="_self" href="#macro-utility-functions" title="Macro Utility Functions" class="ah-nav">↑</a><a target="_self" href="#latex" title="LaTeX" class="ah-nav">↓</a></h3>
     <p>Fenced code can be "executed" based on its language declaration by adding <code>()</code> after the fence.</p>
@@ -486,9 +530,6 @@ Lift = \frac{1}{2} \rho v^2 S C<span class="hljs-emphasis">_L\
 ">Lift = \frac{1}{2} \rho v^2 S C_L\
 </ne-latex></p>
     <p></p>
-    
-    
-    
     <h4 id="music" title="Music" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Music<a target="_self" href="#latex" title="LaTeX" class="ah-nav">↑</a><a target="_self" href="#charts" title="Charts" class="ah-nav">↓</a></h4>
     <p>Music using <a href="https://abcnotation.com/" target="_tab">ABC Notation</a>.</p>
     <pre><code class="hljs language-markdown">‷abc
@@ -500,8 +541,6 @@ K: Amaj
 |: e'd' f2 g2 | c'b d2 e2 | ba c2 e2 | a6 |
 ‷()
 </code></pre>
-    
-    
     <p><sheet-music title="Nokia Tune" style="display: block; max-width: 98%;">X: 1
 T: Nokia Tune
 M: 3/4
@@ -534,20 +573,19 @@ title: 'My Chart'
     <p><ne-chart>{"data":[{"x":[0,1,2,3,4,5,6],"y":[1,9,4,7,5,2,4],"mode":"markers","marker":{"size":[20,40,25,10,60,90,30]}}],"layout":{"title":"My Chart"}}
 </ne-chart></p>
     <p></p>
+    
+    
     <h3 id="repls" title="REPLS, a.k.a. Cells" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>REPLS, a.k.a. Cells<a target="_self" href="#charts" title="Charts" class="ah-nav">↑</a><a target="_self" href="#tailmatter" title="Document Data (Tailmatter)" class="ah-nav">↓</a></h3>
+    
+    
     <p>
       Support for REPLs, a.k.a. Cells, is part of the spec, although implementors may
       choose to provide varying capabilities. The REPL below is that provided by NerdEditor.
     </p>
-    
-    
     <p>REPLs, a.k.a. Cells, can be used to document source or provide training material by pre-populating some sections.</p>
     <p>To show a section use its name as a unary attribute for the <code>ne-cell</code> tag.</p>
     <p>To set <code>linenumbers</code> or <code>readonly</code> to default on, use them as unary attributes in the <code>ne-cell</code> tag.</p>
-    
-    
     <p>Turn on and off <code>readonly</code> and <code>linenumbers</code> in the slots used to provide default values.</p>
-    
     <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ne-cell</span> <span class="hljs-attr">css</span> <span class="hljs-attr">body</span> <span class="hljs-attr">script</span> <span class="hljs-attr">linenumbers</span> <span class="hljs-attr">replstyle</span>=<span class="hljs-string">"border:solid black 1px;height:10em"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"css"</span>&gt;</span>h1 { font-size:small}<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"body"</span>  <span class="hljs-attr">readonly</span> <span class="hljs-attr">linenumbers</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"resize:both"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Test<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
@@ -563,8 +601,6 @@ title: 'My Chart'
     </ne-cell>
     <p>The NerdEditor cell is based on <a href="https://medium.com/@anywhichway/how-to-host-a-repl-342bc0e15f5d" target="_tab">repl-host</a>.</p>
     <h3 id="tailmatter" title="Document Data (Tailmatter)" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Document Data (Tailmatter)<a target="_self" href="#repls" title="REPLS, a.k.a. Cells" class="ah-nav">↑</a><a target="_self" href="#errors" title="Error Handling" class="ah-nav">↓</a></h3>
-    
-    
     <p>
       The last section of a Computational Markdown document can be delimited by <code>---</code> and contains a
       <a href="https://www.json5.org" target="_tab">JSON5</a> object. The final <code>---</code> must NOT be followed by a new line or any other
@@ -593,13 +629,18 @@ Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <spa
       Errors or issues that are known to not impact the document or are a result of author mistakes are logged to the
       browser debug console.
     </p>
-    <h1 id="security" title="Security" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Security<a target="_self" href="#errors" title="Error Handling" class="ah-nav">↑</a><a target="_self" href="#license" title="License" class="ah-nav">↓</a></h1>
+    <h1 id="security" title="Security" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Security<a target="_self" href="#errors" title="Error Handling" class="ah-nav">↑</a><a target="_self" href="#architecture" title="Architecture" class="ah-nav">↓</a></h1>
     <p>Macros and fenced code run in WebWorkers and any HTML returned is sanitized.</p>
     <p>REPLs run in their own iframes.</p>
-    <h1 id="license" title="License" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>License<a target="_self" href="#security" title="Security" class="ah-nav">↑</a><a target="_self" href="#footnotes" title="Footnotes" class="ah-nav">↓</a></h1>
+    <h1 id="architecture" title="Architecture" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Architecture<a target="_self" href="#security" title="Security" class="ah-nav">↑</a><a target="_self" href="#license" title="License" class="ah-nav">↓</a></h1>
+    <p>
+      Implementing Computational Markdown requires an HTML runtime support library. How this
+      library is implemeneted is not subject to specification.
+    </p>
+    <h1 id="license" title="License" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>License<a target="_self" href="#architecture" title="Architecture" class="ah-nav">↑</a><a target="_self" href="#footnotes" title="Footnotes" class="ah-nav">↓</a></h1>
     <p>
       Although the capitalized term Computational Markdown is trademarked, this content
-      andd the spec are licenced under Creative Commons. Anyone is free to implement
+      and the spec are licenced under Creative Commons. Anyone is free to implement
       Computational Markdown.
     </p>
     <h1 id="footnotes" title="Footnotes" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Footnotes<a target="_self" href="#license" title="License" class="ah-nav">↑</a><a target="_self" href="#footnote-label" title="Footnotes" class="ah-nav">↓</a></h1><section data-footnotes="" class="footnotes">
@@ -662,7 +703,6 @@ Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <spa
       </li>
       <li class="toc-item"><a href="#errors" target="_self">Error Handling</a></li>
       <li class="toc-item"><a href="#security" target="_self">Security</a></li>
+      <li class="toc-item"><a href="#architecture" target="_self">Architecture</a></li>
       <li class="toc-item"><a href="#license" target="_self">License</a></li>
-    <li class="toc-item"><a href="#footnotes" target="_self">Footnotes</a></li></ol>
-<template id="document-data">{"nePreview":true,"page":{"title":"Computational Markdown","licensor":"AnyWhichWay","documentationLicense":"Creative Commons","target":"_tab"},"urls":{}}</template>
-<script type="module">import {attach} from "./src/computational-html.js"; import AutoHelm from "https://esm.sh/@anywhichway/autohelm@0.0.1?bundle"; AutoHelm.activate(document.body); attach(document.body);</script></body></html>
+    <li class="toc-item"><a href="#footnotes" target="_self">Footnotes</a></li></ol><template id="document-data">{"nePreview":true,"page":{"title":"Computational Markdown","licensor":"AnyWhichWay","documentationLicense":"Creative Commons","target":"_tab"},"urls":{}}</template><script type="module">import {attach} from "./src/computational-html.js"; import AutoHelm from "https://esm.sh/@anywhichway/autohelm@0.0.1?bundle"; AutoHelm.activate(document.body); attach(document.body);</script></body></html>
