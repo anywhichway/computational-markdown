@@ -117,78 +117,6 @@ td {
   
   
     
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
-
-  
-  
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css">
     <h1 id="introduction-to-computational-markdown™" title="Introduction To Computational Markdown™" class="ah-heading">Introduction To Computational Markdown™<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↓</a></h1>
     <p>
@@ -298,7 +226,7 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       <label style="display:block;font-family:monospace">Cash:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="pettycash">50</span></var></label>
       <label style="display:block;font-family:monospace">Checking:&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="checking">2</span></var></label>
       <label style="display:block;font-family:monospace">Expense:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="expense" value="0"></label>
-      <label style="display:block;font-family:monospace">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="total" data-string-template="${![#pettycash] + ![#checking] - ![#expense]}">52</span></var></label>
+      <label style="display:block;font-family:monospace">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="total" data-string-template="${![#pettycash] + ![#checking] - ![#expense]}"></span></var></label>
     </p>
     <p>
       Input fields can also be used for training: <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>. Here, we insert an unnamed value, i.e. just text after an input
@@ -385,9 +313,9 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     <h4 id="basic" title="Basic" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Basic<a target="_self" href="#math" title="Math" class="ah-nav">↑</a><a target="_self" href="#advanced" title="Advanced" class="ah-nav">↓</a></h4>
     <p>Basic math expressions can be evaluated or solved using the JavaScript math object.</p>
     <ul>
-      <li>π * 3^2 = <span data-string-template="${Math.PI * Math.pow(3,2)}">28.274333882308138</span></li>
-      <li>π * r^2 when r = 3 is <code>`${Math.PI * solve('Math.pow(r,2)',{r:3})}`()</code> = <span data-string-template="${Math.PI * solve('Math.pow(r,2)',{r:3})}">28.274333882308138</span></li>
-      <li>π * r^2 when r = 3 is <code>`${Math.PI * Math.pow(r,2)}`({r:3})</code> = <span data-string-template="${Math.PI * Math.pow(3,2)}">28.274333882308138</span></li>
+      <li>π * 3^2 = <span data-string-template="${Math.PI * Math.pow(3,2)}"></span></li>
+      <li>π * r^2 when r = 3 is <code>`${Math.PI * solve('Math.pow(r,2)',{r:3})}`()</code> = <span data-string-template="${Math.PI * solve('Math.pow(r,2)',{r:3})}"></span></li>
+      <li>π * r^2 when r = 3 is <code>`${Math.PI * Math.pow(r,2)}`({r:3})</code> = <span data-string-template="${Math.PI * Math.pow(3,2)}"></span></li>
     </ul>
     <h4 id="advanced" title="Advanced" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Advanced<a target="_self" href="#basic" title="Basic" class="ah-nav">↑</a><a target="_self" href="#spreadsheets" title="Spreadsheets" class="ah-nav">↓</a></h4>
     <p>
@@ -396,8 +324,8 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     </p>
     <p>This supports simplifying algebraic expressions or computing a derivative.</p>
     <ul>
-      <li>simplify('x*y-y*x') =&nbsp;<span data-string-template="${simplify('x*y-y*x')}">0</span></li>
-      <li>derivative('x^2 + x', 'x') =&nbsp; <span data-string-template="${derivative('x^2 + x', 'x')}">2 * x + 1</span></li>
+      <li>simplify('x*y-y*x') =&nbsp;<span data-string-template="${simplify('x*y-y*x')}"></span></li>
+      <li>derivative('x^2 + x', 'x') =&nbsp; <span data-string-template="${derivative('x^2 + x', 'x')}"></span></li>
     </ul>
     <p>
       <code>`${derivative('x^2 + x', 'x')}`()</code> is shorthand for <code>:value[]{:="derivative('x^2 + x', 'x')"}</code>, which is
@@ -406,11 +334,11 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     <p>Prefixing MathJS functions with <code>math.</code> is not be necessary.</p>
     <p>As with basic math, expressions can be solved by providing arguments, e.g.</p>
     <ul>
-      <li>solve(derivative('x^2 + x', 'x'),{x:2}) =&nbsp;<span data-string-template="${solve(derivative('x^2 + x', 'x'),{x:2})}">5</span></li>
+      <li>solve(derivative('x^2 + x', 'x'),{x:2}) =&nbsp;<span data-string-template="${solve(derivative('x^2 + x', 'x'),{x:2})}"></span></li>
     </ul>
     <p>
       Note, in the above example <code>{x:2}</code> is not passed in because we are trying to solve the derivative. Passing <code>{x:2}</code> at
-      the top level would result in an error: <span data-string-template="${solve(derivative('2^2 + 2', '2'))}">{"stringTemplateLiteralError":"TypeError: Unexpected type of argument in function derivative (expected: SymbolNode or identifier, actual: string, index: 1)"}</span>    </p>
+      the top level would result in an error: <span data-string-template="${solve(derivative('2^2 + 2', '2'))}"></span>    </p>
     <h4 id="spreadsheets" title="Spreadsheets" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Spreadsheets<a target="_self" href="#advanced" title="Advanced" class="ah-nav">↑</a><a target="_self" href="#inline-data" title="Inline Data" class="ah-nav">↓</a></h4>
     <p>
       If an id is provided for a table and it is also give class <code>cm-spreadsheet</code> using extras <code>{}</code> notation, the first row
@@ -445,7 +373,7 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
         </tr>
         <tr>
           <td>Total</td>
-          <td><span data-string-template="${![#mytable_Amounts_Petty_Cash]+![#mytable_Amounts_Checking]}">NaN</span></td>
+          <td><span data-string-template="${![#mytable_Amounts_Petty_Cash]+![#mytable_Amounts_Checking]}"></span></td>
         </tr>
         
       </tbody>
@@ -460,11 +388,9 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"quakes"</span>&gt;</span></span>
 <span class="hljs-code">    !(https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson)
 &lt;/var&gt;
-</span></code></pre><var id="quakes" src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson">{"type":"FeatureCollection","metadata":{"generated":1668523295000,"url":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson","title":"USGS All Earthquakes, Past Hour","status":200,"api":"1.10.3","count":8},"features":[{"type":"Feature","properties":{"mag":1.16,"place":"4km NNW of The Geysers, CA","time":1668522492550,"updated":1668523210298,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807766","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807766.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":21,"net":"nc","code":"73807766","ids":",nc73807766,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":10,"dmin":0.006929,"rms":0.03,"gap":91,"magType":"md","type":"earthquake","title":"M 1.2 - 4km NNW of The Geysers, CA"},"geometry":{"type":"Point","coordinates":[-122.7801666,38.8063316,0.81]},"id":"nc73807766"},{"type":"Feature","properties":{"mag":1.3,"place":"Central Alaska","time":1668522200473,"updated":1668522349350,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022enswr1r","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022enswr1r.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":26,"net":"ak","code":"022enswr1r","ids":",ak022enswr1r,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":0.35,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.3 - Central Alaska"},"geometry":{"type":"Point","coordinates":[-149.1265,62.3529,4.4]},"id":"ak022enswr1r"},{"type":"Feature","properties":{"mag":0.47,"place":"21 km SSW of Mammoth, Wyoming","time":1668521915960,"updated":1668522734090,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60032094","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60032094.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":3,"net":"uu","code":"60032094","ids":",uu60032094,","sources":",uu,","types":",origin,phase-data,","nst":9,"dmin":0.03396,"rms":0.12,"gap":108,"magType":"md","type":"earthquake","title":"M 0.5 - 21 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8038333,44.7953333,7.05]},"id":"uu60032094"},{"type":"Feature","properties":{"mag":0.71,"place":"22 km SSW of Mammoth, Wyoming","time":1668521888580,"updated":1668522670350,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60525137","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60525137.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":8,"net":"uu","code":"60525137","ids":",uu60525137,","sources":",uu,","types":",origin,phase-data,","nst":11,"dmin":0.02991,"rms":0.14,"gap":104,"magType":"md","type":"earthquake","title":"M 0.7 - 22 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8086667,44.7856667,6.19]},"id":"uu60525137"},{"type":"Feature","properties":{"mag":1.05,"place":"22 km SSW of Mammoth, Wyoming","time":1668521577380,"updated":1668522829260,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60525132","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60525132.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":17,"net":"uu","code":"60525132","ids":",uu60525132,","sources":",uu,","types":",origin,phase-data,","nst":12,"dmin":0.02733,"rms":0.17,"gap":103,"magType":"md","type":"earthquake","title":"M 1.1 - 22 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8121667,44.7896667,7.64]},"id":"uu60525132"},{"type":"Feature","properties":{"mag":1.44,"place":"11km E of Cloverdale, CA","time":1668521039770,"updated":1668523033282,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807756","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807756.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":32,"net":"nc","code":"73807756","ids":",nc73807756,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":26,"dmin":0.007155,"rms":0.04,"gap":109,"magType":"md","type":"earthquake","title":"M 1.4 - 11km E of Cloverdale, CA"},"geometry":{"type":"Point","coordinates":[-122.8929977,38.8100014,4.96]},"id":"nc73807756"},{"type":"Feature","properties":{"mag":1.5,"place":"46 km WNW of Tatitlek, Alaska","time":1668521003077,"updated":1668521171063,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022enssgxf","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022enssgxf.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":35,"net":"ak","code":"022enssgxf","ids":",ak022enssgxf,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":1.17,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.5 - 46 km WNW of Tatitlek, Alaska"},"geometry":{"type":"Point","coordinates":[-147.3998,61.0902,65.3]},"id":"ak022enssgxf"},{"type":"Feature","properties":{"mag":0.730000019,"place":"southeastern Missouri","time":1668520668900,"updated":1668521866160,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nm60500011","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nm60500011.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":8,"net":"nm","code":"60500011","ids":",nm60500011,","sources":",nm,","types":",origin,phase-data,","nst":5,"dmin":0.08801,"rms":0.180000007,"gap":198,"magType":"md","type":"earthquake","title":"M 0.7 - southeastern Missouri"},"geometry":{"type":"Point","coordinates":[-89.5534973144531,36.173168182373,10.789999961853]},"id":"nm60500011"}],"bbox":[-149.1265,36.173168182373,0.81,-89.553497314453,62.3529,65.3]}</var>
+</span></code></pre><var id="quakes" src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson">{"type":"FeatureCollection","metadata":{"generated":1668523955000,"url":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson","title":"USGS All Earthquakes, Past Hour","status":200,"api":"1.10.3","count":9},"features":[{"type":"Feature","properties":{"mag":0.91,"place":"14km SE of Bodfish, CA","time":1668523300690,"updated":1668523514579,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ci40132671","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40132671.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":13,"net":"ci","code":"40132671","ids":",ci40132671,","sources":",ci,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":10,"dmin":0.1922,"rms":0.18,"gap":99,"magType":"ml","type":"earthquake","title":"M 0.9 - 14km SE of Bodfish, CA"},"geometry":{"type":"Point","coordinates":[-118.3811667,35.504,4.1]},"id":"ci40132671"},{"type":"Feature","properties":{"mag":1.16,"place":"4km NNW of The Geysers, CA","time":1668522492550,"updated":1668523513330,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807766","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807766.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":21,"net":"nc","code":"73807766","ids":",nc73807766,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":10,"dmin":0.006929,"rms":0.03,"gap":91,"magType":"md","type":"earthquake","title":"M 1.2 - 4km NNW of The Geysers, CA"},"geometry":{"type":"Point","coordinates":[-122.7801666,38.8063316,0.81]},"id":"nc73807766"},{"type":"Feature","properties":{"mag":1.3,"place":"Central Alaska","time":1668522200473,"updated":1668522349350,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022enswr1r","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022enswr1r.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":26,"net":"ak","code":"022enswr1r","ids":",ak022enswr1r,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":0.35,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.3 - Central Alaska"},"geometry":{"type":"Point","coordinates":[-149.1265,62.3529,4.4]},"id":"ak022enswr1r"},{"type":"Feature","properties":{"mag":0.47,"place":"21 km SSW of Mammoth, Wyoming","time":1668521915960,"updated":1668522734090,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60032094","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60032094.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":3,"net":"uu","code":"60032094","ids":",uu60032094,","sources":",uu,","types":",origin,phase-data,","nst":9,"dmin":0.03396,"rms":0.12,"gap":108,"magType":"md","type":"earthquake","title":"M 0.5 - 21 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8038333,44.7953333,7.05]},"id":"uu60032094"},{"type":"Feature","properties":{"mag":0.71,"place":"22 km SSW of Mammoth, Wyoming","time":1668521888580,"updated":1668522670350,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60525137","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60525137.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":8,"net":"uu","code":"60525137","ids":",uu60525137,","sources":",uu,","types":",origin,phase-data,","nst":11,"dmin":0.02991,"rms":0.14,"gap":104,"magType":"md","type":"earthquake","title":"M 0.7 - 22 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8086667,44.7856667,6.19]},"id":"uu60525137"},{"type":"Feature","properties":{"mag":1.05,"place":"22 km SSW of Mammoth, Wyoming","time":1668521577380,"updated":1668522829260,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60525132","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60525132.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":17,"net":"uu","code":"60525132","ids":",uu60525132,","sources":",uu,","types":",origin,phase-data,","nst":12,"dmin":0.02733,"rms":0.17,"gap":103,"magType":"md","type":"earthquake","title":"M 1.1 - 22 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8121667,44.7896667,7.64]},"id":"uu60525132"},{"type":"Feature","properties":{"mag":1.44,"place":"11km E of Cloverdale, CA","time":1668521039770,"updated":1668523033282,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807756","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807756.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":32,"net":"nc","code":"73807756","ids":",nc73807756,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":26,"dmin":0.007155,"rms":0.04,"gap":109,"magType":"md","type":"earthquake","title":"M 1.4 - 11km E of Cloverdale, CA"},"geometry":{"type":"Point","coordinates":[-122.8929977,38.8100014,4.96]},"id":"nc73807756"},{"type":"Feature","properties":{"mag":1.5,"place":"46 km WNW of Tatitlek, Alaska","time":1668521003077,"updated":1668521171063,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022enssgxf","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022enssgxf.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":35,"net":"ak","code":"022enssgxf","ids":",ak022enssgxf,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":1.17,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.5 - 46 km WNW of Tatitlek, Alaska"},"geometry":{"type":"Point","coordinates":[-147.3998,61.0902,65.3]},"id":"ak022enssgxf"},{"type":"Feature","properties":{"mag":0.730000019,"place":"southeastern Missouri","time":1668520668900,"updated":1668521866160,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nm60500011","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nm60500011.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":8,"net":"nm","code":"60500011","ids":",nm60500011,","sources":",nm,","types":",origin,phase-data,","nst":5,"dmin":0.08801,"rms":0.180000007,"gap":198,"magType":"md","type":"earthquake","title":"M 0.7 - southeastern Missouri"},"geometry":{"type":"Point","coordinates":[-89.5534973144531,36.173168182373,10.789999961853]},"id":"nm60500011"}],"bbox":[-149.1265,35.504,0.81,-89.553497314453,62.3529,65.3]}</var>
     
     <h3 id="macro-utility-functions" title="Macro Utility Functions" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Macro Utility Functions<a target="_self" href="#inline-data" title="Inline Data" class="ah-nav">↑</a><a target="_self" href="#computational-fenced-code" title="Computational Fenced Code" class="ah-nav">↓</a></h3>
-    
-    
     <p>There are some macro utility functions in addition to <a href="#math">math</a>.</p>
     <ul>
       <li>
@@ -480,17 +406,7 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     <p><em>Earthquake Summary</em></p>
     <pre><code class="hljs language-markdown"><span class="hljs-code">`${ul(![#quakes].features,({properties}) =&gt; properties.mag + '  ' + properties.place)}`</span>()
 </code></pre>
-    
-    
-    <p><span data-string-template="${ul(![#quakes].features,({properties}) => properties.mag + ' ' + properties.place)}"><ul><li>1.16 4km NNW of The Geysers, CA</li>
-<li>1.3 Central Alaska</li>
-<li>0.47 21 km SSW of Mammoth, Wyoming</li>
-<li>0.71 22 km SSW of Mammoth, Wyoming</li>
-<li>1.05 22 km SSW of Mammoth, Wyoming</li>
-<li>1.44 11km E of Cloverdale, CA</li>
-<li>1.5 46 km WNW of Tatitlek, Alaska</li>
-<li>0.730000019 southeastern Missouri</li>
-</ul></span></p>
+    <p><span data-string-template="${ul(![#quakes].features,({properties}) => properties.mag + ' ' + properties.place)}"></span></p>
     <h3 id="computational-fenced-code" title="Computational Fenced Code" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Computational Fenced Code<a target="_self" href="#macro-utility-functions" title="Macro Utility Functions" class="ah-nav">↑</a><a target="_self" href="#latex" title="LaTeX" class="ah-nav">↓</a></h3>
     <p>Fenced code can be "executed" based on its language declaration by adding <code>()</code> after the fence.</p>
     <p>
@@ -573,11 +489,7 @@ title: 'My Chart'
     <p><ne-chart>{"data":[{"x":[0,1,2,3,4,5,6],"y":[1,9,4,7,5,2,4],"mode":"markers","marker":{"size":[20,40,25,10,60,90,30]}}],"layout":{"title":"My Chart"}}
 </ne-chart></p>
     <p></p>
-    
-    
     <h3 id="repls" title="REPLS, a.k.a. Cells" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>REPLS, a.k.a. Cells<a target="_self" href="#charts" title="Charts" class="ah-nav">↑</a><a target="_self" href="#tailmatter" title="Document Data (Tailmatter)" class="ah-nav">↓</a></h3>
-    
-    
     <p>
       Support for REPLs, a.k.a. Cells, is part of the spec, although implementors may
       choose to provide varying capabilities. The REPL below is that provided by NerdEditor.
@@ -622,14 +534,15 @@ title: 'My Chart'
 Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vloop"</span>&gt;</span>!`${![#total] + ![#vloop]}`<span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span>
 </code></pre>
     <p>
-      Loop: <var id="loop"><span data-string-template="${![#total] + ![#pettycash]}">102</span></var>
-      Vicious Loop: <var id="vloop"><span data-string-template="${![#total] + ![#vloop]}" class="chtml-error">Error processing ${![#total] + ![#vloop]}. Check for loop in dependencies.</span></var>
+      Loop: <var id="loop"><span data-string-template="${![#total] + ![#pettycash]}"></span></var>
+      Vicious Loop: <var id="vloop"><span data-string-template="${![#total] + ![#vloop]}" class="chtml-error"></span></var>
     </p>
     <p>
       Errors or issues that are known to not impact the document or are a result of author mistakes are logged to the
       browser debug console.
     </p>
     <h1 id="security" title="Security" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Security<a target="_self" href="#errors" title="Error Handling" class="ah-nav">↑</a><a target="_self" href="#architecture" title="Architecture" class="ah-nav">↓</a></h1>
+    
     <p>Macros and fenced code run in WebWorkers and any HTML returned is sanitized.</p>
     <p>REPLs run in their own iframes.</p>
     <h1 id="architecture" title="Architecture" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Architecture<a target="_self" href="#security" title="Security" class="ah-nav">↑</a><a target="_self" href="#license" title="License" class="ah-nav">↓</a></h1>
