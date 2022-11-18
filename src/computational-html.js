@@ -19,8 +19,8 @@ const sanitize = async (text) => {
    return f(text);
 }
 const replaceReferences = async (string,requestor) => {
-    for(const match of XRegExp.matchRecursive(string, '\\!\\[', '\\]', 'g',{unbalanced:"skip"})) {
-        string = await replaceAsync(string,new RegExp(`\\!\\[(${XRegExp.escape(match)})\\]`,"g"),async (match,selector) => {
+    for(const match of XRegExp.matchRecursive(string, '\\$\\[', '\\]', 'g',{unbalanced:"skip"})) {
+        string = await replaceAsync(string,new RegExp(`\\$\\[(${XRegExp.escape(match)})\\]`,"g"),async (match,selector) => {
             let bracketAdded;
             if(selector.endsWith("[")) {
                 selector += "]";
@@ -231,7 +231,12 @@ const stringTemplateLiteralEval = async (stringTemplateLiteral,requestor) => {
                         } catch(e) {
                             // memoized request may have been read already, ignore errors
                         }
-                        string = await sanitize(string);
+                        const contentType = response.headers.get("Content-Type");
+                        if(contentType==="application/json")  {
+                            string = JSON.parse(replacement)
+                        } else {
+                            string = await sanitize(string);
+                        }
                     } else {
                         node.innerHTML = `<span style="color:red" class="chtml-error">fetch("${url.href}") returned ${response.status}</span>`;
                         string = node.innerText;
@@ -241,9 +246,10 @@ const stringTemplateLiteralEval = async (stringTemplateLiteral,requestor) => {
                 }
             }
             if(string && typeof(string)==="object") {
-                string = JSON.stringify(string);
+                string = JSON.stringify(string,null," ");
+            } else {
+                string = (string+"").replace(/\r\n/g,"\\n");
             }
-            string = (string+"").replace(/\r\n/g,"\\n");
             if(node.innerHTML!==string) {
                 node.innerHTML = string;
             }

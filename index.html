@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css"><meta name="title" content="Computational Markdown"><meta name="licensor" content="AnyWhichWay"><meta name="documentationLicense" content="Creative Commons"><base target="_tab"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css"><meta name="title" content="Computational Markdown"><meta name="licensor" content="AnyWhichWay"><meta name="license" content="Creative Commons"><meta name="version" content="0.0.1b"><base target="_tab"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" async="" src="https://cdn.jsdelivr.net/npm/@anywhichway/quick-component@0.0.12" component="https://cdn.jsdelivr.net/npm/@anywhichway/math-science-formula@0.0.5" as="ne-latex"></script>
         <script type="text/javascript" async="" src="https://cdn.jsdelivr.net/npm/@anywhichway/quick-component@0.0.12" component="https://cdn.jsdelivr.net/npm/@anywhichway/sheet-music@0.0.1"></script>
         <script src="https://cdn.jsdelivr.net/npm/@anywhichway/quick-component/quick-component.js" component="https://cdn.jsdelivr.net/npm/@anywhichway/repl-host@0.0.13" as="ne-cell"></script>
@@ -45,6 +45,9 @@ kbd {
     border-radius: 3px;
     padding: 1px 2px 0;
     border: 1px solid black;
+}
+var {
+    white-space: pre;
 }
 
 .ah-nav {
@@ -114,24 +117,21 @@ td {
   
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css">
-    <h1 id="introduction-to-computational-markdown™" title="Introduction To Computational Markdown™" class="ah-heading">Introduction To Computational Markdown™<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↓</a></h1>
+    <h1 id="computation-markdown-introduction" title="Computation Markdown Introduction" class="ah-heading">Computation Markdown Introduction<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↓</a></h1>
+    <p>This site serves as an informal specification for Computational Markdown™.</p>
+    
     <p>
-      Do you need to write documents or training materials and ensure math is correct, display live data, or get
-      user input to modify the document? Do you want to write and play music or display charts? Let the document
-      do the work for you!
+      The use of Edge or Chrome is recommended. Firefox and Safari do not support direct file saving. When you use them
+      you will need to use the browser native mechanisms to save a page's source after you use File/Export. Also, with
+      Firefox, you will encounter this error: <code>Error: Dynamic module import is disabled or not supported in this context</code>
+      when you use some macros.
     </p>
-    <p>
-      Computational Markdown adds support for form layout, macros (including list layout and advanced math), reactive
-      computation, data import, language processing, e.g. Latex, and document data (tailmatter).
-    </p>
-    <p>This document provides an informal specificaiton for Computational Markdown.</p>
-    <p>
-      The use of Edge or Chrome is recommended. Firefox, has not yet released full support for modern Web workers.
-      You will encounter this error: <code>Error: Dynamic module import is disabled or not supported in this context</code>.
-    </p>
-    <h1 id="table-of-contents" title="Table Of Contents" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Table Of Contents<a target="_self" href="#introduction-to-computational-markdown™" title="Introduction To Computational Markdown™" class="ah-nav">↑</a><a target="_self" href="#extras" title="Markdown Extras" class="ah-nav">↓</a></h1>
+    <h1 id="table-of-contents" title="Table Of Contents" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Table Of Contents<a target="_self" href="#computation-markdown-introduction" title="Computation Markdown Introduction" class="ah-nav">↑</a><a target="_self" href="#extras" title="Markdown Extras" class="ah-nav">↓</a></h1>
+    
     <ol class="toc-item">
       <li class="toc-item"><a href="#extras" target="_self">Markdown Extras</a></li>
+      <li class="toc-item"><a href="#basic-markdown" target="_self">Basic Markdown</a></li>
+      <li class="toc-item"><a href="#extended-markdown" target="_self">Extended Markdown</a></li>
       <li class="toc-item"><a href="#frontmatter" target="_self">Frontmatter</a></li>
       <li class="toc-item"><a href="#computational-markdown" target="_self">Computational Markdown</a>
         <ol class="toc-item">
@@ -164,14 +164,11 @@ td {
       </li>
       <li class="toc-item"><a href="#errors" target="_self">Error Handling</a></li>
       <li class="toc-item"><a href="#security" target="_self">Security</a></li>
-      <li class="toc-item"><a href="#architecture" target="_self">Architecture</a></li>
       <li class="toc-item"><a href="#license" target="_self">License</a></li>
+      <li class="toc-item"><a href="#repository" target="_self">Repository</a></li>
     <li class="toc-item"><a href="#footnotes" target="_self">Footnotes</a></li></ol>
-    <h1 id="extras" title="Markdown Extras" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Markdown Extras<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↑</a><a target="_self" href="#frontmatter" title="Frontmatter" class="ah-nav">↓</a></h1>
-    <p>
-      Computational markdown assumes the support of extras notation introduced by PHP
-      Markdown. Some Markdown can be immediately followed by data inside <code>{}</code>.
-    </p>
+    <h1 id="extras" title="Markdown Extras" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Markdown Extras<a target="_self" href="#table-of-contents" title="Table Of Contents" class="ah-nav">↑</a><a target="_self" href="#basic-markdown" title="Basic Markdown" class="ah-nav">↓</a></h1>
+    <p>Some Markdown can be immediately followed by data inside <code>{}</code>.</p>
     <ul>
       <li>
         <code>#&lt;id&gt;</code> sets an <code>id</code> on the HTML element generated by the Markdown. This is useful for links and Computational
@@ -186,26 +183,67 @@ td {
       <li><code>checked</code>, for Markdown that translates to HTML elements that support the unary <code>checked</code> attribute.</li>
       <li><code>hidden</code>, to hide the generated HTML element (useful for data or comments)</li>
     </ul>
-    <h1 id="frontmatter" title="Frontmatter" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Frontmatter<a target="_self" href="#extras" title="Markdown Extras" class="ah-nav">↑</a><a target="_self" href="#computational-markdown" title="Computational Markdown" class="ah-nav">↓</a></h1>
-    <p>Computational markdown assumes the support of frontmatter in <code>YAML</code> format.</p>
+    
+    <h1 id="basic-markdown" title="Basic Markdown" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Basic Markdown<a target="_self" href="#extras" title="Markdown Extras" class="ah-nav">↑</a><a target="_self" href="#extended-markdown" title="Extended Markdown" class="ah-nav">↓</a></h1>
+    <p>Computational Markdown assumes all Basic Markdown.</p>
+    <h1 id="extended-markdown" title="Extended Markdown" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Extended Markdown<a target="_self" href="#basic-markdown" title="Basic Markdown" class="ah-nav">↑</a><a target="_self" href="#frontmatter" title="Frontmatter" class="ah-nav">↓</a></h1>
+    <p>
+      Computational Markdown assumes most Extended Markdown and adds two markup elements. See
+      <a href="https://www.markdownguide.org/cheat-sheet/">https://www.markdownguide.org/cheat-sheet/</a>.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Markdown</th>
+          <th>Display</th>
+          <th>Extras</th>
+          <th>Attribute Extras</th>
+          <th>Computational</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>[true]{} [false]{}</code></td>
+          <td><input checked="" type="checkbox"> <input type="checkbox"></td>
+          <td>✓(required)</td>
+          <td></td>
+          <td>✓</td>
+        </tr>
+        <tr>
+          <td><code>(traditional){#gender checked}</code> <code>(non-traditional){#gender}</code></td>
+          <td><label><input name="gender" value="traditional" type="radio">traditional</label><label><input name="gender" value="non-traditional" type="radio">non-traditional</label></td>
+          <td>✓(required)</td>
+          <td>checked</td>
+          <td>✓</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1 id="frontmatter" title="Frontmatter" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Frontmatter<a target="_self" href="#extended-markdown" title="Extended Markdown" class="ah-nav">↑</a><a target="_self" href="#computational-markdown" title="Computational Markdown" class="ah-nav">↓</a></h1>
+    <p>NerdEditor supports frontmatter in <code>YAML</code> format.</p>
     <p>A title value is converted to a <code>&lt;title&gt;</code> element in the output HTML.</p>
     <p>A target value is set as the target window or tab for links using the <code>&lt;base&gt;</code> element.</p>
     <p>All other values are converted to <code>&lt;meta&gt;</code> elements.</p>
     <pre><code class="hljs language-yaml"><span class="hljs-meta">---</span>
-<span class="hljs-attr">title:</span> <span class="hljs-string">NerdEditor</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">Computational</span> <span class="hljs-string">Markdown</span>
 <span class="hljs-attr">licensor:</span> <span class="hljs-string">AnyWhichWay</span>
-<span class="hljs-attr">documentationLicense:</span> <span class="hljs-string">Creative</span> <span class="hljs-string">Commons</span>
-<span class="hljs-attr">sourceCodeLicense:</span> <span class="hljs-string">AGPL</span>
+<span class="hljs-attr">license:</span> <span class="hljs-string">Creative</span> <span class="hljs-string">Commons</span>
+<span class="hljs-attr">version:</span> <span class="hljs-number">0.0</span><span class="hljs-string">.1b</span>
 <span class="hljs-meta">---
 </span></code></pre>
     <p>results in:</p>
-    <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>NerdEditor<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Computational Markdown<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licensor"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"AnyWhichWay"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"documentationLicense"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Creative Commons"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sourceCodeLicense"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"AGPL"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"license"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Creative Commons"</span>&gt;</span>
 </code></pre>
     <h1 id="computational-markdown" title="Computational Markdown" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Computational Markdown<a target="_self" href="#frontmatter" title="Frontmatter" class="ah-nav">↑</a><a target="_self" href="#form-layout" title="Form Layout" class="ah-nav">↓</a></h1>
+    
+    <p>
+      Computational Markdown adds support for form layout, macros (including and list layout and advanced math), reactive
+      computation, data import, language processing, e.g. Latex, and document data (tailmatter).
+    </p>
+    
     <h2 id="form-layout" title="Form Layout" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Form Layout<a target="_self" href="#computational-markdown" title="Computational Markdown" class="ah-nav">↑</a><a target="_self" href="#macros" title="Macros" class="ah-nav">↓</a></h2>
+    
     <p>
       Single lines starting with text, followed by a colon, then spaces and either a <code>var</code>, <code>input</code>, or
       <code>textarea</code> and terminated with a <code>\</code> will put sequential lines into a form layout that respects spaces
@@ -214,7 +252,7 @@ td {
     <pre><code class="hljs language-markdown">Cash:        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span>&gt;</span></span>:value[50]{#pettycash}<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span></span>\
 Checking:    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span>&gt;</span></span>:value[2]{#checking}<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span></span>\
 Expense:     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"expense"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span>&gt;</span></span>\
-Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span>&gt;</span></span>:value[]{#total :="${![#pettycash] + ![#checking] - ![#expense]}"}<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span></span>\
+Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span>&gt;</span></span>:value[]{#total :="${$[#pettycash] + $[#checking] - $[#expense]}"}<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span></span>\
 </code></pre>
     <h2 id="macros" title="Macros" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Macros<a target="_self" href="#form-layout" title="Form Layout" class="ah-nav">↑</a><a target="_self" href="#comments-and-hidden-data" title="Comments and Hidden Data" class="ah-nav">↓</a></h2>
     <p>See <a href="#form-layout">Form Layout</a> above for the definition of this form.</p>
@@ -222,15 +260,16 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       <label style="display:block;font-family:monospace">Cash:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="pettycash">50</span></var></label>
       <label style="display:block;font-family:monospace">Checking:&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="checking">2</span></var></label>
       <label style="display:block;font-family:monospace">Expense:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="expense" value="0"></label>
-      <label style="display:block;font-family:monospace">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="total" data-string-template="${![#pettycash] + ![#checking] - ![#expense]}"></span></var></label>
+      <label style="display:block;font-family:monospace">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var><span id="total" data-string-template="${$[#pettycash] + $[#checking] - $[#expense]}"></span></var></label>
     </p>
     <p>
       Input fields can also be used for training: <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>. Here, we insert an unnamed value, i.e. just text after an input
       field. Every time the input changes, the adjacent text will get updated.
     </p>
-    <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"q1"</span> <span class="hljs-attr">data-default</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"What is the answer?"</span>&gt;</span></span>&nbsp;:value[]{:="${![#q1]===4 ? 'Correct!' : isNaN(![#q1]) ? '' : 'Incorrect!'}"}`
+    <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"q1"</span> <span class="hljs-attr">data-default</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"What is the answer?"</span>&gt;</span></span>&nbsp;:value[]{:="${$[#q1]===4 ? 'Correct!' : isNaN($[#q1]) ? '' : 'Incorrect!'}"}`
 </code></pre>
-    <p>What is 2 + 2: <input id="q1" data-default="NaN" placeholder="What is the answer?">&nbsp;<span data-string-template="${![#q1]===4 ? 'Correct!' : isNaN(![#q1]) ? '' : 'Incorrect!'}"></span></p>
+    
+    <p>What is 2 + 2: <input id="q1" data-default="NaN" placeholder="What is the answer?">&nbsp;<span data-string-template="${$[#q1]===4 ? 'Correct!' : isNaN($[#q1]) ? '' : 'Incorrect!'}"></span></p>
     <p>
       Note, Computational Markdown supports a non-standard HTML attribute, <code>default</code> on tags that are referenced by
       macros. This is converted to <code>data-default</code> during transpilation to HTML. It helps ensure macros do not throw errors
@@ -282,17 +321,20 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     </p>
     <h3 id="comments-and-hidden-data" title="Comments and Hidden Data" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Comments and Hidden Data<a target="_self" href="#macros" title="Macros" class="ah-nav">↑</a><a target="_self" href="#named-value-references" title="Named Value References" class="ah-nav">↓</a></h3>
     <p>You can also use the <code>:value</code> directive to insert hidden data or comments.</p>
+    
     <pre><code class="hljs language-csharp">:<span class="hljs-keyword">value</span>[This <span class="hljs-keyword">is</span> a comment]{hidden}
 </code></pre>
+    
     <p><span hidden="">This is a comment</span></p>
     <p>You will have to inspect the source to see the impact of the above.</p>
     <h3 id="named-value-references" title="Named Value References" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Named Value References<a target="_self" href="#comments-and-hidden-data" title="Comments and Hidden Data" class="ah-nav">↑</a><a target="_self" href="#math" title="Math" class="ah-nav">↓</a></h3>
     <p>
-      In the code for the <code>Total</code> field above, <code>:value[]{#total :="${![#pettycash] + ![#checking] - ![#expense]}"}</code>, you can
+      In the code for the <code>Total</code> field above, <code>:value[]{#total :="${$[#pettycash] + $[#checking] - $[#expense]}"}</code>, you can
       see it uses a string template containing <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">CSS selectors</a>
-      wrapped in <code>[]</code>s prefixed by an <code>!</code>, e.g. <code>![&lt;selector&gt;]</code>.<sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>. This is read as "the parsed value of the <code>textContent</code>
+      wrapped in <code>[]</code>s prefixed by an <code>!</code>, e.g. <code>$[&lt;selector&gt;]</code>.<sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>. This is read as "the parsed value of the <code>textContent</code>
       of the element(s) returned by selector <code>&lt;selector&gt;</code>".
     </p>
+    
     <p>
       By convention, named values, a.k.a. variables, are typically created using <code>:value</code>. However, they can actually be
       any HTML element or elements selectable using CSS.
@@ -307,28 +349,31 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     </p>
     <h3 id="math" title="Math" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Math<a target="_self" href="#named-value-references" title="Named Value References" class="ah-nav">↑</a><a target="_self" href="#basic" title="Basic" class="ah-nav">↓</a></h3>
     <h4 id="basic" title="Basic" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Basic<a target="_self" href="#math" title="Math" class="ah-nav">↑</a><a target="_self" href="#advanced" title="Advanced" class="ah-nav">↓</a></h4>
+    
     <p>Basic math expressions can be evaluated or solved using the JavaScript math object.</p>
     <ul>
       <li>π * 3^2 = <span data-string-template="${Math.PI * Math.pow(3,2)}"></span></li>
       <li>π * r^2 when r = 3 is <code>`${Math.PI * solve('Math.pow(r,2)',{r:3})}`()</code> = <span data-string-template="${Math.PI * solve('Math.pow(r,2)',{r:3})}"></span></li>
       <li>π * r^2 when r = 3 is <code>`${Math.PI * Math.pow(r,2)}`({r:3})</code> = <span data-string-template="${Math.PI * Math.pow(3,2)}"></span></li>
     </ul>
+    
     <h4 id="advanced" title="Advanced" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Advanced<a target="_self" href="#basic" title="Basic" class="ah-nav">↑</a><a target="_self" href="#spreadsheets" title="Spreadsheets" class="ah-nav">↓</a></h4>
     <p>
-      The macro evaluator is preloaded with <a href="https://mathjs.org/" target="_tab">MathJS</a> so you can use its power in your
+      The macro evaluator is pre-loaded with <a href="https://mathjs.org/" target="_tab">MathJS</a> so you can use its power in your
       document.
     </p>
-    <p>This supports simplifying algebraic expressions or computing a derivative.</p>
+    <p>Forgot the rules for simplifying algebraic expressions or need a derivative? No problem!</p>
     <ul>
       <li>simplify('x*y-y*x') =&nbsp;<span data-string-template="${simplify('x*y-y*x')}"></span></li>
       <li>derivative('x^2 + x', 'x') =&nbsp; <span data-string-template="${derivative('x^2 + x', 'x')}"></span></li>
     </ul>
+    
     <p>
       <code>`${derivative('x^2 + x', 'x')}`()</code> is shorthand for <code>:value[]{:="derivative('x^2 + x', 'x')"}</code>, which is
       useful when you do not need to create a named value from a macro.
     </p>
-    <p>Prefixing MathJS functions with <code>math.</code> is not be necessary.</p>
-    <p>As with basic math, expressions can be solved by providing arguments, e.g.</p>
+    <p>Note, prefixing MathJS functions with <code>math.</code> is not necessary.</p>
+    <p>As with basic math, you can solve expressions by providing arguments, e.g.</p>
     <ul>
       <li>solve(derivative('x^2 + x', 'x'),{x:2}) =&nbsp;<span data-string-template="${solve(derivative('x^2 + x', 'x'),{x:2})}"></span></li>
     </ul>
@@ -337,10 +382,11 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       the top level would result in an error: <span data-string-template="${solve(derivative('2^2 + 2', '2'))}"></span>    </p>
     <h4 id="spreadsheets" title="Spreadsheets" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Spreadsheets<a target="_self" href="#advanced" title="Advanced" class="ah-nav">↑</a><a target="_self" href="#inline-data" title="Inline Data" class="ah-nav">↓</a></h4>
     <p>
-      If an id is provided for a table and it is also give class <code>cm-spreadsheet</code> using extras <code>{}</code> notation, the first row
+      If you provide an id for a table and give it the class <code>ne-spreadsheet</code> using extras <code>{}</code> notation, the first row
       and column are used for generating ids that can be used in macros. Using extras notation, classes can be applied to columns.
       (You will need to include your own <code>style</code> block.)
     </p>
+    
     <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span>
 <span class="hljs-code">    .currency-usd::before { content: "$"}
 &lt;/style&gt;
@@ -348,10 +394,10 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
 | ---------- | ----------- |
 | Petty Cash | 10          |
 | Checking   | 20          |
-| Total      | `${![#mytable_Amounts_Petty_Cash]+![#mytable_Amounts_Checking]}`() |
-{#mytable .cm-spreadsheet}
+| Total      | `${$[#mytable_Amounts_Petty_Cash]+$[#mytable_Amounts_Checking]}`() |
+{#mytable .ne-spreadsheet}
 </span></code></pre>
-    <table id="mytable" class="cm-spreadsheet">
+    <table id="mytable" class="ne-spreadsheet">
       <thead>
         <tr>
           <th></th>
@@ -361,22 +407,22 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       <tbody>
         <tr>
           <td>Petty Cash</td>
-          <td>10</td>
+          <td id="mytable_Amounts_Petty_Cash" class="currency-usd">10</td>
         </tr>
         <tr>
           <td>Checking</td>
-          <td>20</td>
+          <td id="mytable_Amounts_Checking" class="currency-usd">20</td>
         </tr>
         <tr>
           <td>Total</td>
-          <td><span data-string-template="${![#mytable_Amounts_Petty_Cash]+![#mytable_Amounts_Checking]}"></span></td>
+          <td id="mytable_Amounts_Total" class="currency-usd"><span data-string-template="${$[#mytable_Amounts_Petty_Cash]+$[#mytable_Amounts_Checking]}"></span></td>
         </tr>
         
       </tbody>
     </table>
     <h3 id="inline-data" title="Inline Data" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Inline Data<a target="_self" href="#spreadsheets" title="Spreadsheets" class="ah-nav">↑</a><a target="_self" href="#macro-utility-functions" title="Macro Utility Functions" class="ah-nav">↓</a></h3>
     <p>
-      Data can be inlined by prefixing links with a <code>!</code> or <code>!!</code>. A single <code>!</code> will inline the data when readers access the document.
+      Inline data by prefixing links with a <code>!</code> or <code>!!</code>. A single <code>!</code> will inline the data when readers access the document.
       The data will be dynamic. A double <code>!!</code> will inline the data when the document is transpiled to HTML. The data will be
       static (unless the document is being transpiled on the fly).
     </p>
@@ -384,16 +430,356 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
     <pre><code class="hljs language-markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"quakes"</span>&gt;</span></span>
 <span class="hljs-code">    !(https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson)
 &lt;/var&gt;
-</span></code></pre><var id="quakes" src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson">{"type":"FeatureCollection","metadata":{"generated":1668524795000,"url":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson","title":"USGS All Earthquakes, Past Hour","status":200,"api":"1.10.3","count":7},"features":[{"type":"Feature","properties":{"mag":1.57,"place":"8km W of Cobb, CA","time":1668523957650,"updated":1668524650461,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807776","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807776.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":38,"net":"nc","code":"73807776","ids":",nc73807776,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":25,"dmin":0.01102,"rms":0.02,"gap":56,"magType":"md","type":"earthquake","title":"M 1.6 - 8km W of Cobb, CA"},"geometry":{"type":"Point","coordinates":[-122.8146667,38.8338318,1.87]},"id":"nc73807776"},{"type":"Feature","properties":{"mag":0.91,"place":"14km SE of Bodfish, CA","time":1668523300690,"updated":1668523514579,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ci40132671","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci40132671.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":13,"net":"ci","code":"40132671","ids":",ci40132671,","sources":",ci,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":10,"dmin":0.1922,"rms":0.18,"gap":99,"magType":"ml","type":"earthquake","title":"M 0.9 - 14km SE of Bodfish, CA"},"geometry":{"type":"Point","coordinates":[-118.3811667,35.504,4.1]},"id":"ci40132671"},{"type":"Feature","properties":{"mag":1.16,"place":"4km NNW of The Geysers, CA","time":1668522492550,"updated":1668523513330,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc73807766","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/nc73807766.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":21,"net":"nc","code":"73807766","ids":",nc73807766,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":10,"dmin":0.006929,"rms":0.03,"gap":91,"magType":"md","type":"earthquake","title":"M 1.2 - 4km NNW of The Geysers, CA"},"geometry":{"type":"Point","coordinates":[-122.7801666,38.8063316,0.81]},"id":"nc73807766"},{"type":"Feature","properties":{"mag":1.3,"place":"Central Alaska","time":1668522200473,"updated":1668522349350,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak022enswr1r","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022enswr1r.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":26,"net":"ak","code":"022enswr1r","ids":",ak022enswr1r,","sources":",ak,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":0.35,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.3 - Central Alaska"},"geometry":{"type":"Point","coordinates":[-149.1265,62.3529,4.4]},"id":"ak022enswr1r"},{"type":"Feature","properties":{"mag":0.47,"place":"21 km SSW of Mammoth, Wyoming","time":1668521915960,"updated":1668522734090,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60032094","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60032094.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":3,"net":"uu","code":"60032094","ids":",uu60032094,","sources":",uu,","types":",origin,phase-data,","nst":9,"dmin":0.03396,"rms":0.12,"gap":108,"magType":"md","type":"earthquake","title":"M 0.5 - 21 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8038333,44.7953333,7.05]},"id":"uu60032094"},{"type":"Feature","properties":{"mag":0.71,"place":"22 km SSW of Mammoth, Wyoming","time":1668521888580,"updated":1668522670350,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60525137","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60525137.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":8,"net":"uu","code":"60525137","ids":",uu60525137,","sources":",uu,","types":",origin,phase-data,","nst":11,"dmin":0.02991,"rms":0.14,"gap":104,"magType":"md","type":"earthquake","title":"M 0.7 - 22 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8086667,44.7856667,6.19]},"id":"uu60525137"},{"type":"Feature","properties":{"mag":1.05,"place":"22 km SSW of Mammoth, Wyoming","time":1668521577380,"updated":1668522829260,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/uu60525132","detail":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/uu60525132.geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":17,"net":"uu","code":"60525132","ids":",uu60525132,","sources":",uu,","types":",origin,phase-data,","nst":12,"dmin":0.02733,"rms":0.17,"gap":103,"magType":"md","type":"earthquake","title":"M 1.1 - 22 km SSW of Mammoth, Wyoming"},"geometry":{"type":"Point","coordinates":[-110.8121667,44.7896667,7.64]},"id":"uu60525132"}],"bbox":[-149.1265,35.504,0.81,-110.8038333,62.3529,7.64]}</var>
-    
+</span></code></pre><var id="quakes" src="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson">{
+ "type": "FeatureCollection",
+ "metadata": {
+  "generated": 1668742408000,
+  "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
+  "title": "USGS All Earthquakes, Past Hour",
+  "status": 200,
+  "api": "1.10.3",
+  "count": 8
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 1.4,
+    "place": "30 km WNW of Susitna, Alaska",
+    "time": 1668742031700,
+    "updated": 1668742172216,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak022eskzv2a",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022eskzv2a.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "automatic",
+    "tsunami": 0,
+    "sig": 30,
+    "net": "ak",
+    "code": "022eskzv2a",
+    "ids": ",ak022eskzv2a,",
+    "sources": ",ak,",
+    "types": ",origin,phase-data,",
+    "nst": null,
+    "dmin": null,
+    "rms": 0.42,
+    "gap": null,
+    "magType": "ml",
+    "type": "earthquake",
+    "title": "M 1.4 - 30 km WNW of Susitna, Alaska"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -151.0379,
+     61.6637,
+     75.3
+    ]
+   },
+   "id": "ak022eskzv2a"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 1.4,
+    "place": "26 km WSW of Salcha, Alaska",
+    "time": 1668741567213,
+    "updated": 1668741740857,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak022esky6j5",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022esky6j5.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "automatic",
+    "tsunami": 0,
+    "sig": 30,
+    "net": "ak",
+    "code": "022esky6j5",
+    "ids": ",ak022esky6j5,",
+    "sources": ",ak,",
+    "types": ",origin,phase-data,",
+    "nst": null,
+    "dmin": null,
+    "rms": 0.53,
+    "gap": null,
+    "magType": "ml",
+    "type": "earthquake",
+    "title": "M 1.4 - 26 km WSW of Salcha, Alaska"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.3753,
+     64.3944,
+     0
+    ]
+   },
+   "id": "ak022esky6j5"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 1.1,
+    "place": "28 km WSW of Salcha, Alaska",
+    "time": 1668741484961,
+    "updated": 1668741590423,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak022eskxx3k",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022eskxx3k.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "automatic",
+    "tsunami": 0,
+    "sig": 19,
+    "net": "ak",
+    "code": "022eskxx3k",
+    "ids": ",ak022eskxx3k,",
+    "sources": ",ak,",
+    "types": ",origin,phase-data,",
+    "nst": null,
+    "dmin": null,
+    "rms": 0.42,
+    "gap": null,
+    "magType": "ml",
+    "type": "earthquake",
+    "title": "M 1.1 - 28 km WSW of Salcha, Alaska"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.4055,
+     64.3842,
+     2.1
+    ]
+   },
+   "id": "ak022eskxx3k"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 2.6,
+    "place": "62 km SSW of Whites City, New Mexico",
+    "time": 1668741015750,
+    "updated": 1668741431040,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000iqlc",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us7000iqlc.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "reviewed",
+    "tsunami": 0,
+    "sig": 104,
+    "net": "us",
+    "code": "7000iqlc",
+    "ids": ",us7000iqlc,",
+    "sources": ",us,",
+    "types": ",origin,phase-data,",
+    "nst": 28,
+    "dmin": 0.081,
+    "rms": 0.27,
+    "gap": 73,
+    "magType": "ml",
+    "type": "earthquake",
+    "title": "M 2.6 - 62 km SSW of Whites City, New Mexico"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -104.5904,
+     31.6406,
+     5
+    ]
+   },
+   "id": "us7000iqlc"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 1.1,
+    "place": "16 km WSW of Salcha, Alaska",
+    "time": 1668740803077,
+    "updated": 1668741248884,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak022eskvfg3",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022eskvfg3.geojson",
+    "felt": 1,
+    "cdi": 3.1,
+    "mmi": null,
+    "alert": null,
+    "status": "automatic",
+    "tsunami": 0,
+    "sig": 19,
+    "net": "ak",
+    "code": "022eskvfg3",
+    "ids": ",ak022eskvfg3,",
+    "sources": ",ak,",
+    "types": ",dyfi,origin,phase-data,",
+    "nst": null,
+    "dmin": null,
+    "rms": 0.6,
+    "gap": null,
+    "magType": "ml",
+    "type": "earthquake",
+    "title": "M 1.1 - 16 km WSW of Salcha, Alaska"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.2125,
+     64.4587,
+     0
+    ]
+   },
+   "id": "ak022eskvfg3"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 1.3,
+    "place": "Central Alaska",
+    "time": 1668740356106,
+    "updated": 1668740568844,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak022esklapq",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022esklapq.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "automatic",
+    "tsunami": 0,
+    "sig": 26,
+    "net": "ak",
+    "code": "022esklapq",
+    "ids": ",ak022esklapq,",
+    "sources": ",ak,",
+    "types": ",origin,phase-data,",
+    "nst": null,
+    "dmin": null,
+    "rms": 0.6,
+    "gap": null,
+    "magType": "ml",
+    "type": "earthquake",
+    "title": "M 1.3 - Central Alaska"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.3009,
+     64.4651,
+     4.7
+    ]
+   },
+   "id": "ak022esklapq"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 1.8,
+    "place": "48 km NNW of Petersville, Alaska",
+    "time": 1668739561675,
+    "updated": 1668739693552,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ak022eskihaf",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ak022eskihaf.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "automatic",
+    "tsunami": 0,
+    "sig": 50,
+    "net": "ak",
+    "code": "022eskihaf",
+    "ids": ",ak022eskihaf,",
+    "sources": ",ak,",
+    "types": ",origin,phase-data,",
+    "nst": null,
+    "dmin": null,
+    "rms": 0.88,
+    "gap": null,
+    "magType": "ml",
+    "type": "earthquake",
+    "title": "M 1.8 - 48 km NNW of Petersville, Alaska"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -151.0826,
+     62.9085,
+     24.6
+    ]
+   },
+   "id": "ak022eskihaf"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 4.6,
+    "place": "south of the Kermadec Islands",
+    "time": 1668739456456,
+    "updated": 1668740984040,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000iql7",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us7000iql7.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "reviewed",
+    "tsunami": 0,
+    "sig": 326,
+    "net": "us",
+    "code": "7000iql7",
+    "ids": ",us7000iql7,",
+    "sources": ",us,",
+    "types": ",origin,phase-data,",
+    "nst": 15,
+    "dmin": 3.646,
+    "rms": 0.76,
+    "gap": 160,
+    "magType": "mb",
+    "type": "earthquake",
+    "title": "M 4.6 - south of the Kermadec Islands"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -178.7293,
+     -32.8528,
+     10
+    ]
+   },
+   "id": "us7000iql7"
+  }
+ ],
+ "bbox": [
+  -178.7293,
+  -32.8528,
+  0,
+  -104.5904,
+  64.4651,
+  75.3
+ ]
+}</var>
     <h3 id="macro-utility-functions" title="Macro Utility Functions" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Macro Utility Functions<a target="_self" href="#inline-data" title="Inline Data" class="ah-nav">↑</a><a target="_self" href="#computational-fenced-code" title="Computational Fenced Code" class="ah-nav">↓</a></h3>
     
-    
     <p>There are some macro utility functions in addition to <a href="#math">math</a>.</p>
+    
+    
     <ul>
       <li>
         <code>ul</code> takes a JSON array and returns the HTML for an unordered list using a callback function to provide the content of
-        the list items, e.g. <code>!`${ul(![#astros].people,({name,craft}) =&gt; name + ' flying in ' + craft)}`</code>.
+        the list items, e.g. <code>!`${ul($[#astros].people,({name,craft}) =&gt; name + ' flying in ' + craft)}`</code>.
       </li>
       <li><code>ol</code> does the same as <code>ul</code>, but returns the HTML for an ordered list</li>
       <li>
@@ -401,10 +787,14 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
         be sanitized if HTML.
       </li>
     </ul>
+    
+    
     <p><em>Earthquake Summary</em></p>
-    <pre><code class="hljs language-markdown"><span class="hljs-code">`${ul(![#quakes].features,({properties}) =&gt; properties.mag + '  ' + properties.place)}`</span>()
+    <pre><code class="hljs language-markdown"><span class="hljs-code">`${ul($[#quakes].features,({properties}) =&gt; properties.mag + '  ' + properties.place)}`</span>()
 </code></pre>
-    <p><span data-string-template="${ul(![#quakes].features,({properties}) => properties.mag + ' ' + properties.place)}"></span></p>
+    <p><span data-string-template="${ul($[#quakes].features,({properties}) => properties.mag + ' ' + properties.place)}"></span></p>
+    
+    
     <h3 id="computational-fenced-code" title="Computational Fenced Code" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Computational Fenced Code<a target="_self" href="#macro-utility-functions" title="Macro Utility Functions" class="ah-nav">↑</a><a target="_self" href="#latex" title="LaTeX" class="ah-nav">↓</a></h3>
     <p>Fenced code can be "executed" based on its language declaration by adding <code>()</code> after the fence.</p>
     <p>
@@ -412,10 +802,8 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
       after the fence to improve code formatting in the editor itself. However, it will also work on the fence line.
     </p>
     <p>Showing the source of fenced code can be toggled with a <code>+</code> sign before the <code>()</code>.</p>
-    <p>
-      The examples of computational fenced code for LaTeX, music, and charts below supported by <a href="https://www.nerdeditor.com">NerdEditor</a>. They are not
-      a part of the Computational Markdown spec.
-    </p>
+    
+    
     <h4 id="latex" title="LaTeX" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>LaTeX<a target="_self" href="#computational-fenced-code" title="Computational Fenced Code" class="ah-nav">↑</a><a target="_self" href="#music" title="Music" class="ah-nav">↓</a></h4>
     <table>
       <thead>
@@ -435,7 +823,7 @@ Total:       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name
         </tr>
       </tbody>
     </table>
-    <p>Fenced blocks are supported in addition to inlines, e.g.</p>
+    <p>You can use fenced blocks in addition to inlines, e.g.</p>
     <pre><code class="hljs language-markdown">‷latex
 Lift = \frac{1}{2} \rho v^2 S C<span class="hljs-emphasis">_L\
 ‷()
@@ -444,8 +832,20 @@ Lift = \frac{1}{2} \rho v^2 S C<span class="hljs-emphasis">_L\
 ">Lift = \frac{1}{2} \rho v^2 S C_L\
 </ne-latex></p>
     <p></p>
+    <p>You can also use <code>$</code> to bracket LaTeX expressions inline, <code>$Lift = \frac{1}{2} \rho v^2 S C_L$</code> = <ne-latex title=" Lift = \frac{1}{2} \rho v^2 S C_L"> Lift = \frac{1}{2} \rho v^2 S C_L</ne-latex></p>
+    <p>And <code>$$</code> to create a block, <code>$$Lift = \frac{1}{2} \rho v^2 S C_L$$</code>.</p>
+    
+    
+    <p><ne-latex title="Lift = \frac{1}{2} \rho v^2 S C_L
+">Lift = \frac{1}{2} \rho v^2 S C_L
+</ne-latex></p>
+    <p></p>
+    <p>
+      Wikipedia provides a great list of Latex tags for <a href="https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject" target="_tab">math</a>
+      and <a href="https://en.wikibooks.org/wiki/LaTeX/Chemical_Graphics" target="_tab">chemistry</a>.
+    </p>
     <h4 id="music" title="Music" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Music<a target="_self" href="#latex" title="LaTeX" class="ah-nav">↑</a><a target="_self" href="#charts" title="Charts" class="ah-nav">↓</a></h4>
-    <p>Music using <a href="https://abcnotation.com/" target="_tab">ABC Notation</a>.</p>
+    <p>Compose and make playable some music using <a href="https://abcnotation.com/" target="_tab">ABC Notation</a>.</p>
     <pre><code class="hljs language-markdown">‷abc
 X: 1
 T: Nokia Tune
@@ -463,12 +863,28 @@ K: Amaj
 |: e'd' f2 g2 | c'b d2 e2 | ba c2 e2 | a6 |
 </sheet-music></p>
     <p></p>
+    <p>If you remove the <code>:</code> in second position of the last line, the <button>Play</button> button will disappear</p>
+    <pre><code class="hljs language-markdown">‷abc
+X:1
+T: Paper
+K:D
+| DDAA | BBA2|
+‷()
+</code></pre>
+    <p><sheet-music title="Paper" style="display: block; max-width: 98%;">X:1
+T: Paper
+K:D
+| DDAA | BBA2|
+</sheet-music></p>
+    <p></p>
+    
     <h4 id="charts" title="Charts" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Charts<a target="_self" href="#music" title="Music" class="ah-nav">↑</a><a target="_self" href="#repls" title="REPLS, a.k.a. Cells" class="ah-nav">↓</a></h4>
-    <p>Build charts using the <a href="https://plotly.com/graphing-libraries/" target="_tab">Plotly Charting Library</a> with imported data. [^5]</p>
+    <p>You can build charts using the <a href="https://plotly.com/graphing-libraries/" target="_tab">Plotly Charting Library</a> with imported data. <sup><a href="#user-content-fn-5" id="user-content-fnref-5" data-footnote-ref="" aria-describedby="footnote-label">5</a></sup></p>
+    
     <pre><code class="hljs language-markdown">:value[!! (./demo-data/chart.json5)]{#chart hidden}
 
 ‷plotly
-<span class="hljs-code">    ![#chart]
+<span class="hljs-code">    $[#chart]
 ‷()
 </span></code></pre>
     <p><span id="chart" hidden="">{
@@ -487,15 +903,74 @@ title: 'My Chart'
     <p><ne-chart>{"data":[{"x":[0,1,2,3,4,5,6],"y":[1,9,4,7,5,2,4],"mode":"markers","marker":{"size":[20,40,25,10,60,90,30]}}],"layout":{"title":"My Chart"}}
 </ne-chart></p>
     <p></p>
+    <p>Note, currently Ploty data <em><strong>MUST</strong></em> be resolved when the Markdown is transpiled. Your links must be prefixed with <code>!!</code>.</p>
+    <p>Of, course you could also put most of the Ploty definition directly in your Markdown file and just load the line data.</p>
+    
+    
+    <pre><code class="hljs language-markdown">:value[!! (./demo-data/chart-data.json5)]{#chartdata hidden}
+
+‷plotly
+{
+  data: [ {
+<span class="hljs-code">    x:${JSON.stringify($[#chartdata].x)},
+    y:${JSON.stringify($[#chartdata].y)},
+    mode: 'markers',
+    marker: {
+      size: [20, 40, 25, 10, 60, 90, 30]
+    }
+  }],
+  layout: {
+    title: 'My Chart'
+  }
+}
+‷()
+</span></code></pre>
+    <p><span id="chartdata" hidden="">{
+x: [
+0,
+1,
+2,
+3,
+4,
+5,
+6
+],
+y: [
+1,
+9,
+4,
+7,
+5,
+2,
+4
+]
+}</span></p>
+    
+    
+    <p><ne-chart> {
+  data: [ {
+    x:[0,1,2,3,4,5,6],
+    y:[1,9,4,7,5,2,4],
+    mode: 'markers',
+    marker: {
+      size: [20, 40, 25, 10, 60, 90, 30]
+    }
+  }],
+  layout: {
+    title: 'My Chart'
+  }
+}
+</ne-chart></p>
+    <p></p>
     <h3 id="repls" title="REPLS, a.k.a. Cells" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>REPLS, a.k.a. Cells<a target="_self" href="#charts" title="Charts" class="ah-nav">↑</a><a target="_self" href="#tailmatter" title="Document Data (Tailmatter)" class="ah-nav">↓</a></h3>
-    <p>
-      Support for REPLs, a.k.a. Cells, is part of the spec, although implementors may
-      choose to provide varying capabilities. The REPL below is that provided by NerdEditor.
-    </p>
+    
+    
     <p>REPLs, a.k.a. Cells, can be used to document source or provide training material by pre-populating some sections.</p>
     <p>To show a section use its name as a unary attribute for the <code>ne-cell</code> tag.</p>
+    
     <p>To set <code>linenumbers</code> or <code>readonly</code> to default on, use them as unary attributes in the <code>ne-cell</code> tag.</p>
-    <p>Turn on and off <code>readonly</code> and <code>linenumbers</code> in the slots used to provide default values.</p>
+    
+    <p>You can also turn on and off <code>readonly</code> and <code>linenumbers</code> in the slots used to provide default values.</p>
     <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ne-cell</span> <span class="hljs-attr">css</span> <span class="hljs-attr">body</span> <span class="hljs-attr">script</span> <span class="hljs-attr">linenumbers</span> <span class="hljs-attr">replstyle</span>=<span class="hljs-string">"border:solid black 1px;height:10em"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"css"</span>&gt;</span>h1 { font-size:small}<span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"body"</span>  <span class="hljs-attr">readonly</span> <span class="hljs-attr">linenumbers</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"resize:both"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Test<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
@@ -509,8 +984,12 @@ title: 'My Chart'
       </slot>
       <slot name="script">(function() { console.log(); })()</slot>
     </ne-cell>
-    <p>The NerdEditor cell is based on <a href="https://medium.com/@anywhichway/how-to-host-a-repl-342bc0e15f5d" target="_tab">repl-host</a>.</p>
+    
+    
+    <p>This cell is based on <a href="https://medium.com/@anywhichway/how-to-host-a-repl-342bc0e15f5d" target="_tab">repl-host</a>.</p>
     <h3 id="tailmatter" title="Document Data (Tailmatter)" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Document Data (Tailmatter)<a target="_self" href="#repls" title="REPLS, a.k.a. Cells" class="ah-nav">↑</a><a target="_self" href="#errors" title="Error Handling" class="ah-nav">↓</a></h3>
+    
+    
     <p>
       The last section of a Computational Markdown document can be delimited by <code>---</code> and contains a
       <a href="https://www.json5.org" target="_tab">JSON5</a> object. The final <code>---</code> must NOT be followed by a new line or any other
@@ -519,8 +998,8 @@ title: 'My Chart'
     <p>The object is available to macros as <code>document.data</code>.</p>
     <p>If frontmatter is provided in the document, then the property 'page' is added with all the frontmatter variables.</p>
     <p>
-      The property <code>document.data.urls</code> cab be used to store data URLs for images and other content. This object has the ids of the
-      content as keys and data URLs as values.
+      The data also stores data URLs for images and other content in a sub-object called <code>urls</code> that has the ids of the
+      content as keys and the data URLs as values.
     </p>
     <p>
       The object <code>document.data</code> is a special object that is exported to the WebWorker that evaluates templates, although
@@ -528,40 +1007,37 @@ title: 'My Chart'
     </p>
     <h1 id="errors" title="Error Handling" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Error Handling<a target="_self" href="#tailmatter" title="Document Data (Tailmatter)" class="ah-nav">↑</a><a target="_self" href="#security" title="Security" class="ah-nav">↓</a></h1>
     <p>Loops in macros are trapped.</p>
-    <pre><code class="hljs language-html">Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"loop"</span>&gt;</span>!`${![#total] + ![#pettycash]}`<span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span>
-Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vloop"</span>&gt;</span>!`${![#total] + ![#vloop]}`<span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span>
+    <pre><code class="hljs language-html">Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"loop"</span>&gt;</span>!`${$[#total] + $[#pettycash]}`<span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span>
+Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vloop"</span>&gt;</span>!`${$[#total] + $[#vloop]}`<span class="hljs-tag">&lt;/<span class="hljs-name">var</span>&gt;</span>
 </code></pre>
     <p>
-      Loop: <var id="loop"><span data-string-template="${![#total] + ![#pettycash]}"></span></var>
-      Vicious Loop: <var id="vloop"><span data-string-template="${![#total] + ![#vloop]}" class="chtml-error"></span></var>
+      Loop: <var id="loop"><span data-string-template="${$[#total] + $[#pettycash]}"></span></var>
+      Vicious Loop: <var id="vloop"><span data-string-template="${$[#total] + $[#vloop]}"></span></var>
     </p>
     <p>
       Errors or issues that are known to not impact the document or are a result of author mistakes are logged to the
       browser debug console.
     </p>
-    <h1 id="security" title="Security" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Security<a target="_self" href="#errors" title="Error Handling" class="ah-nav">↑</a><a target="_self" href="#architecture" title="Architecture" class="ah-nav">↓</a></h1>
-    <p>Macros and fenced code run in WebWorkers and any HTML returned is sanitized.</p>
-    
-    <p>REPLs run in their own iframes.</p>
-    <h1 id="architecture" title="Architecture" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Architecture<a target="_self" href="#security" title="Security" class="ah-nav">↑</a><a target="_self" href="#license" title="License" class="ah-nav">↓</a></h1>
+    <h1 id="security" title="Security" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Security<a target="_self" href="#errors" title="Error Handling" class="ah-nav">↑</a><a target="_self" href="#license" title="License" class="ah-nav">↓</a></h1>
+    <p>NerdEditor is the first tool to implement Computational Markdown is currently in BETA.</p>
+    <p>Macros and fenced code should be run in WebWorkers and sanitize any HTML returned.</p>
+    <p>REPLs should run in their own iframes.</p>
     <p>
-      Implementing Computational Markdown requires an HTML runtime support library. How this
-      library is implemeneted is not subject to specification.
+      Currently any HTML included directly in Markdown should have <code>script</code> tags and attributes starting with "on" removed.
+      Style blocks should also be sanitized.
     </p>
-    <h1 id="license" title="License" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>License<a target="_self" href="#architecture" title="Architecture" class="ah-nav">↑</a><a target="_self" href="#footnotes" title="Footnotes" class="ah-nav">↓</a></h1>
-    <p>
-      Although the capitalized term Computational Markdown is trademarked, this content
-      and the spec are licenced under Creative Commons. Anyone is free to implement
-      Computational Markdown.
-    </p>
-    <h1 id="footnotes" title="Footnotes" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Footnotes<a target="_self" href="#license" title="License" class="ah-nav">↑</a><a target="_self" href="#footnote-label" title="Footnotes" class="ah-nav">↓</a></h1><section data-footnotes="" class="footnotes">
+    <h1 id="license" title="License" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>License<a target="_self" href="#security" title="Security" class="ah-nav">↑</a><a target="_self" href="#repository" title="Repository" class="ah-nav">↓</a></h1>
+    <p>The spec for Computational Markdown is released under Creative Commons. Anyone is free to implement.</p>
+    <h1 id="repository" title="Repository" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Repository<a target="_self" href="#license" title="License" class="ah-nav">↑</a><a target="_self" href="#footnotes" title="Footnotes" class="ah-nav">↓</a></h1>
+    <p><a href="https://github.com/anywhichway/computational-markdown">https://github.com/anywhichway/computational-markdown</a></p>
+    <h1 id="footnotes" title="Footnotes" class="ah-heading"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Footnotes<a target="_self" href="#repository" title="Repository" class="ah-nav">↑</a><a target="_self" href="#footnote-label" title="Footnotes" class="ah-nav">↓</a></h1><section data-footnotes="" class="footnotes">
       <h2 class="sr-only ah-heading" id="footnote-label" title="Footnotes"><span class="ah-toc-icon" style="margin-right: 0.25em;">☷</span>Footnotes<a target="_self" href="#footnotes" title="Footnotes" class="ah-nav">↑</a></h2>
       <ol>
         <li id="user-content-fn-1">
           <p>
             Note, the correct values can still be viewed in the source of the resulting HTML. You will
             need to use a specialized education browser to stop this, or implement server code that is called by something like this
-            <code>${await isCorrect("#q1",![#q1]) ? 'Correct!' : isNaN(![#q1]) ? '' : 'Incorrect!'}</code>. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a>
+            <code>${await isCorrect("#q1",$[#q1]) ? 'Correct!' : isNaN($[#q1]) ? '' : 'Incorrect!'}</code>. <a href="#user-content-fnref-1" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a>
           </p>
         </li>
         <li id="user-content-fn-2">
@@ -569,12 +1045,15 @@ Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <spa
         </li>
         <li id="user-content-fn-3">
           <p>
-            The <code>![\&lt;selector\&gt;]</code> was chosen over <code>=[\&lt;selector\&gt;]</code> because <code>![\&lt;value\&gt;]</code> is almost meaningless in the
-            JavaScript that may be present in string templates. In fact, <code>[]==![]</code> is true! <a href="#user-content-fnref-3" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a>
+            The <code>$[\&lt;selector\&gt;]</code> was chosen over <code>=[\&lt;selector\&gt;]</code> because <code>$[\&lt;value\&gt;]</code> is not likely to mean anything
+            JavaScript that may be present in string templates and is similar to the <code>$(selector)</code> syntax used by JQuery. <a href="#user-content-fnref-3" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a>
           </p>
         </li>
         <li id="user-content-fn-4">
           <p>In JavaScript this is the difference between using <code>querySelector</code> and <code>querySelectorAll</code>. <a href="#user-content-fnref-4" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a></p>
+        </li>
+        <li id="user-content-fn-5">
+          <p>JSON data can be imported using standard JSON or a relaxed format called <a href="https://json5.org/" target="_tab">JSON5</a>. <a href="#user-content-fnref-5" data-footnote-backref="" class="data-footnote-backref" aria-label="Back to content" target="_self">↩</a></p>
         </li>
       </ol>
     </section>
@@ -582,6 +1061,8 @@ Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <spa
 
 <ol class="toc-item" id="ah-floating-toc" style="display: none; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; z-index: 100; opacity: 1; background-color: white; border: 1px solid gray; max-height: 250px; overflow: auto; position: absolute;"><li value="0"><a href="#table-of-contents" target="_self">Table Of Contents</a></li>
       <li class="toc-item"><a href="#extras" target="_self">Markdown Extras</a></li>
+      <li class="toc-item"><a href="#basic-markdown" target="_self">Basic Markdown</a></li>
+      <li class="toc-item"><a href="#extended-markdown" target="_self">Extended Markdown</a></li>
       <li class="toc-item"><a href="#frontmatter" target="_self">Frontmatter</a></li>
       <li class="toc-item"><a href="#computational-markdown" target="_self">Computational Markdown</a>
         <ol class="toc-item">
@@ -614,6 +1095,6 @@ Vicious Loop: <span class="hljs-tag">&lt;<span class="hljs-name">var</span> <spa
       </li>
       <li class="toc-item"><a href="#errors" target="_self">Error Handling</a></li>
       <li class="toc-item"><a href="#security" target="_self">Security</a></li>
-      <li class="toc-item"><a href="#architecture" target="_self">Architecture</a></li>
       <li class="toc-item"><a href="#license" target="_self">License</a></li>
-    <li class="toc-item"><a href="#footnotes" target="_self">Footnotes</a></li></ol><template id="document-data">{"nePreview":true,"page":{"title":"Computational Markdown","licensor":"AnyWhichWay","documentationLicense":"Creative Commons","target":"_tab"},"urls":{}}</template><script type="module">import {attach} from "./src/computational-html.js"; import AutoHelm from "https://esm.sh/@anywhichway/autohelm@0.0.1?bundle"; AutoHelm.activate(document.body); attach(document.body);</script></body></html>
+      <li class="toc-item"><a href="#repository" target="_self">Repository</a></li>
+    <li class="toc-item"><a href="#footnotes" target="_self">Footnotes</a></li></ol><template id="document-data">{"nePreview":true,"page":{"title":"Computational Markdown","licensor":"AnyWhichWay","license":"Creative Commons","version":"0.0.1b","target":"_tab"},"urls":{}}</template><script type="module">import {attach} from "./src/computational-html.js"; import AutoHelm from "https://esm.sh/@anywhichway/autohelm@0.0.1?bundle"; AutoHelm.activate(document.body); attach(document.body);</script></body></html>
