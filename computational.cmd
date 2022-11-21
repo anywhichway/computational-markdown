@@ -8,11 +8,11 @@ target: _tab
 
 # Computation Markdown Introduction
 
-This site serves as an informal specification for Computational Markdown™.
+This site serves as an informal specification for Computational Markdown.
 
 The use of Edge or Chrome is recommended. Firefox and Safari do not support direct file saving. When you use them
 you will need to use the browser native mechanisms to save a page's source after you use File/Export. Also, with
-Firefox, you will encounter this error: `Error: Dynamic module import is disabled or not supported in this context`
+Firefox, you will encounter this error: ==Error: Dynamic module import is disabled or not supported in this context==
 when you use some macros.
 
 # Table Of Contents
